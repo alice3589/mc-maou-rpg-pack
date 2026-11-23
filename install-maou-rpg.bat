@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.3.0'
+$PackVersion = '1.4.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -69,6 +69,7 @@ $Mods = @(
     @('DistantHorizons-3.3.3-1.20.1-fabric-forge.jar', 'https://cdn.modrinth.com/data/uCdwusMi/versions/6UnEfsRQ/DistantHorizons-3.3.3-1.20.1-fabric-forge.jar', '5447c4716571bfdba817c85278a9ce0d411573ec'),
     @('ItemPhysicLite_FORGE_v1.6.13_mc1.20.1.jar', 'https://cdn.modrinth.com/data/OuyCgP8t/versions/frnHNN8n/ItemPhysicLite_FORGE_v1.6.13_mc1.20.1.jar', 'cd2e5d5f7406dc4a6bfa28873308a9f9d6a7e5a1'),
     @('CreativeCore_FORGE_v2.12.42_mc1.20.1.jar', 'https://cdn.modrinth.com/data/OsZiaDHq/versions/HGkNDl47/CreativeCore_FORGE_v2.12.42_mc1.20.1.jar', '1df289c0ac3ffb4b924eb73dc3d673af961479a8'),
+    @('sound-physics-remastered-forge-1.20.1-1.5.1.jar', 'https://cdn.modrinth.com/data/qyVF9oeo/versions/x0sJ9PeR/sound-physics-remastered-forge-1.20.1-1.5.1.jar', '944b4673bcab118f411d050b2cd6b693262bb664'),
     @('curios-forge-5.14.1+1.20.1.jar', 'https://cdn.modrinth.com/data/vvuO3ImH/versions/IPQlZkz1/curios-forge-5.14.1%2B1.20.1.jar', '452175b95ad3db6ff58bb8968f6bf7a9d1e0f480'),
     @('geckolib-forge-1.20.1-4.8.5.jar', 'https://cdn.modrinth.com/data/8BmcQJ2H/versions/dBtjgm8n/geckolib-forge-1.20.1-4.8.5.jar', 'a117dc87ce46a5ea0da0f549199d2e80e81a26fe'),
     @('lionfishapi-3.0.jar', 'https://cdn.modrinth.com/data/FoVacERa/versions/CPftDBcY/lionfishapi-3.0.jar', '79d0404f87fa066480b18c844c1e0b1c5f5475f9'),
