@@ -1,7 +1,7 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
 ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 43個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 44個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +23,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 43個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 44個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -44,12 +44,20 @@ Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better T
 Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails
 
 **見た目**
-MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）
+MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）
 
 **前提mod**
 Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / GlitchCore / Create / Supplementaries / Quark / Zeta / Moonlight Lib
 
 > Create・Supplementaries・Quark は、Integrated Stronghold の最新版が必須にしているため入っています。
+
+## 遠くまで見えるようにする（Distant Horizons）
+
+v1.1.0 から入っています。ふつうの描画距離の外側を、軽い簡易モデル（LOD）で描いてくれます。
+
+- 遠くの地形は、そのあたりを一度読み込んだあとから見えるようになります。最初は近くだけで、歩き回るほど遠くまで埋まっていきます
+- 影（Complementary Unbound）とも一緒に動きます
+- 最初のうちは裏で遠くの地形を作るので、少し重くなります
 
 ## もう一度実行したとき
 
@@ -62,7 +70,7 @@ Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2
 - **「Please close the Minecraft Launcher」と出る** → ランチャーとゲームを完全に終了してから、もう一度
 - **「launcher_profiles.json not found」と出る** → 公式ランチャーにログインして一度起動してから、もう一度
 - **ゲームが落ちる** → `%APPDATA%\.minecraft-rpg\crash-reports` の最新ファイルか `logs\latest.log` を送ってください
-- **重い** → ランチャーの「起動構成」→「魔王討伐RPG」→「その他のオプション」の JVM 引数 `-Xmx8G` を変える。影はゲーム内の「ビデオ設定」→「シェーダーパック」でオフにできます
+- **重い** → ランチャーの「起動構成」→「魔王討伐RPG」→「その他のオプション」の JVM 引数 `-Xmx8G` を変える。影はゲーム内の「ビデオ設定」→「シェーダーパック」でオフにできます。Distant Horizons の描画距離は、ゲーム内の設定画面にある Distant Horizons のボタン（またはオプション → ビデオ設定）から下げられます
 
 ## アンインストール
 
