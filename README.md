@@ -1,7 +1,7 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
 ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 46個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 54個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +23,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 46個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 54個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -40,6 +40,9 @@ L_Ender's Cataclysm / Mutant Iceologer / Peyro's Scythes & Spells / Iron's Spell
 **探索・構造物・バイオーム**
 Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better Trial Chambers / Integrated Stronghold / MES - Moog's End Structures / End Remastered / Feur Extension Fossil / aleki's Nifty Ships
 
+**地形・バイオーム・村・道**
+Tectonic v2（大陸と巨大な山脈）/ Terralith（バイオーム95種以上）/ William Wythers' Overhauled Overworld（バニラのバイオームを作り直す）/ ChoiceTheorem's Overhauled Village（村の作り直し）/ RoadWeaver（村と村をつなぐ道）/ Streams Reflowing（山から海へ流れる川と湖）
+
 **装備・便利・調整**
 Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails
 
@@ -47,9 +50,16 @@ Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / To
 MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）/ ItemPhysic Lite（落ちたアイテムが寝転がる・水に浮く）
 
 **前提mod**
-Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / GlitchCore / CreativeCore / Create / Supplementaries / Quark / Zeta / Moonlight Lib
+Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / GlitchCore / CreativeCore / Lithostitched / Cristel Lib / Create / Supplementaries / Quark / Zeta / Moonlight Lib
 
 > Create・Supplementaries・Quark は、Integrated Stronghold の最新版が必須にしているため入っています。
+
+## 地形生成について（v1.3.0〜）
+
+- **新しいワールドで遊んでください。** 地形の mod は、まだ生成されていない場所にしか効きません。前からあるワールドだと、境目で地形がぶつ切りになります（Terralith は既存ワールドへの追加を公式に非推奨としています）
+- Tectonic は **v2 系（2.4.1）** を使っています。RoadWeaver が Tectonic v3 と組み合わせられないためです
+- Larion World Generation は 1.20.1 用が Fabric 版しかないので入れていません
+- Streams Reflowing は、ワールドを作るときにスポーン周りの地形を調べるので、最初の読み込みが少し長くなります
 
 ## 遠くまで見えるようにする（Distant Horizons）
 
