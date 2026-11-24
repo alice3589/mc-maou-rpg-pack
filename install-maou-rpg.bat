@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.7.0'
+$PackVersion = '1.8.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -113,6 +113,12 @@ $Mods = @(
     @('urushi-1.20.1-6.7.0.jar', 'https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar', '5f9be08bf26b7750029aed63d7d4c20688e7065f')
 )
 $Shader = @('ComplementaryUnbound_r5.10.zip', 'https://cdn.modrinth.com/data/R6NEzAwj/versions/QJiYQisE/ComplementaryUnbound_r5.10.zip', '7a9a6b667b89d6b442837c5c367cd6cc8356b400')
+# Texture packs (resource packs): file name, download URL, SHA-1. Turned on in options.txt.
+$Packs = @(
+    @('NewGlowingOres-Border-1.3-1.20.zip', 'https://cdn.modrinth.com/data/oL18adaQ/versions/YoXl9tp0/NewGlowingOres%C2%A76%5BBV-1.3%5D%5B1.20%5D.zip', '5386de443f769021ac09e7be77f04faf4198b7bf'),
+    @('PvPSwords-1.0.1.zip', 'https://cdn.modrinth.com/data/BpaObV8j/versions/m6EWsDYh/shorterswords.zip', '5a0a83f4ea4cd524fd1d9b4709720fd3743c20ab')
+)
+$DhRenderDistance = 1024
 
 function Say($t) { Write-Host $t }
 function Fail($t) { Write-Host ''; Write-Host "[ERROR] $t" -ForegroundColor Red; exit 1 }
@@ -243,7 +249,7 @@ foreach ($m in $Mods) {
 [IO.File]::WriteAllLines($ListFile, [string[]]$wanted, (New-Object Text.UTF8Encoding $false))
 
 # --- 3. Shaders + first-time settings ---
-Say '[3/4] Shaders (Oculus + Complementary Unbound) ...'
+Say '[3/4] Shaders (Oculus + Complementary Unbound), texture packs, settings ...'
 Get-Verified $Shader[1] (Join-Path $GameDir ('shaderpacks\' + $Shader[0])) $Shader[2] | Out-Null
 $oc = Join-Path $GameDir 'config\oculus.properties'
 if (-not (Test-Path -LiteralPath $oc)) {
@@ -251,6 +257,41 @@ if (-not (Test-Path -LiteralPath $oc)) {
 }
 $opt = Join-Path $GameDir 'options.txt'
 if (-not (Test-Path -LiteralPath $opt)) { [IO.File]::WriteAllText($opt, "lang:ja_jp`n") }
+
+# Texture packs: download, then add them to resourcePacks in options.txt (other packs you chose are kept)
+$PackDir = Join-Path $GameDir 'resourcepacks'
+New-Item -ItemType Directory -Force -Path $PackDir | Out-Null
+foreach ($pk in $Packs) {
+    $r = Get-Verified $pk[1] (Join-Path $PackDir $pk[0]) $pk[2]
+    Say ("    texture pack {0} {1}" -f $r.PadRight(3), $pk[0])
+}
+$lines = [System.Collections.Generic.List[string]]([IO.File]::ReadAllLines($opt))
+$idx = -1
+for ($k = 0; $k -lt $lines.Count; $k++) { if ($lines[$k].StartsWith('resourcePacks:')) { $idx = $k; break } }
+$sel = New-Object System.Collections.Generic.List[string]
+if ($idx -ge 0) {
+    $parsed = ConvertFrom-Json -InputObject $lines[$idx].Substring(14)
+    foreach ($s in $parsed) { if ($s) { $sel.Add([string]$s) } }
+} else {
+    $sel.Add('vanilla'); $sel.Add('mod_resources')
+}
+foreach ($pk in $Packs) { $id = 'file/' + $pk[0]; if (-not $sel.Contains($id)) { $sel.Add($id) } }
+$packLine = 'resourcePacks:' + (ConvertTo-Json -InputObject ([string[]]$sel.ToArray()) -Compress)
+if ($idx -ge 0) { $lines[$idx] = $packLine } else { $lines.Add($packLine) }
+[IO.File]::WriteAllLines($opt, [string[]]$lines.ToArray(), (New-Object Text.UTF8Encoding $false))
+Say '    texture packs turned on (New Glowing Ores + PvP Swords)'
+
+# Distant Horizons: LOD render distance
+$Dh = Join-Path $GameDir 'config\DistantHorizons.toml'
+if (Test-Path -LiteralPath $Dh) {
+    $t = [IO.File]::ReadAllText($Dh)
+    $t2 = [regex]::Replace($t, '(?m)^(\s*lodChunkRenderDistanceRadius\s*=\s*)\d+', ('${1}' + $DhRenderDistance))
+    if ($t2 -ne $t) { [IO.File]::WriteAllText($Dh, $t2) }
+} else {
+    # Distant Horizons fills in the other settings on first start
+    [IO.File]::WriteAllText($Dh, "_version = 5`n`n[client.advanced.graphics.quality]`n`tlodChunkRenderDistanceRadius = $DhRenderDistance`n")
+}
+Say "    Distant Horizons: render distance $DhRenderDistance chunks"
 
 # Heat and Climate handles hot/cold damage, so turn off the body temperature of Tough As Nails
 # (thirst of Tough As Nails stays on). Default TAN 9.2.0 temperature.toml with enable_temperature = false.

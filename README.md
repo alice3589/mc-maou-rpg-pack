@@ -24,7 +24,7 @@
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
 | 2 | mod 77個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
-| 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に |
+| 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に。テクスチャ2つを有効にし、Distant Horizons の描画距離を 1024 に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
 - いつもの `.minecraft` の mod やワールドには触りません（専用フォルダ `.minecraft-rpg` を使います）。
@@ -77,6 +77,31 @@ v1.1.0 から入っています。ふつうの描画距離の外側を、軽い�
 - 遠くの地形は、そのあたりを一度読み込んだあとから見えるようになります。最初は近くだけで、歩き回るほど遠くまで埋まっていきます
 - 影（Complementary Unbound）とも一緒に動きます
 - 最初のうちは裏で遠くの地形を作るので、少し重くなります
+- v1.8.0 から、bat が描画距離を **1024 チャンク** にします（`config\DistantHorizons.toml` の `lodChunkRenderDistanceRadius`）。かなり重いので、カクつくときはゲーム内の Distant Horizons の設定で下げてください。bat をもう一度実行すると 1024 に戻ります
+
+## テクスチャ（v1.8.0〜）
+
+bat が次の2つをダウンロードして、最初から有効にします（`resourcepacks` フォルダ・`options.txt`）。どちらも Modrinth の配布元から直接ダウンロードしていて、このリポジトリには入っていません。
+
+| パック | 内容 | 作者・ライセンス |
+| --- | --- | --- |
+| [New Glowing Ores](https://modrinth.com/resourcepack/new-glowing-ores)（Border・1.20用 v1.3） | 鉱石の粒が縁取り付きで光る | GridExpert・CC BY-NC-SA 4.0 |
+| [PvP Swords](https://modrinth.com/resourcepack/short-pvp-swords)（1.20.1用 v1.0.1） | バニラの剣6種類が短くなる | All Rights Reserved |
+
+- ゲーム内でテクスチャを切り替えるときは、**ワールドに入ってから**「Esc → 設定 → リソースパック」で切り替えてください。タイトル画面で切り替えると、Heat and Climate の不具合で「読み込みに失敗」して全部外れます
+- 自分で選んだ他のテクスチャは残ります。bat をもう一度実行すると、この2つはまた有効になります
+
+### サーバーで New Glowing Ores を強制する
+
+サーバーの `server.properties` に次の3行を書くと、入ってきた人に New Glowing Ores が配られます。断った人はサーバーに入れません。
+
+```
+resource-pack=https://cdn.modrinth.com/data/oL18adaQ/versions/YoXl9tp0/NewGlowingOres%C2%A76%5BBV-1.3%5D%5B1.20%5D.zip
+resource-pack-sha1=5386de443f769021ac09e7be77f04faf4198b7bf
+require-resource-pack=true
+```
+
+サーバーから配れるパックは1つだけです。PvP Swords は再配布が許されていないので、2つをまとめたものは作っていません（PvP Swords は bat で各自に入れます）。
 
 ## もう一度実行したとき
 
