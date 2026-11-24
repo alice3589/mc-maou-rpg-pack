@@ -1,7 +1,7 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
 ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 77個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 69個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +23,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 77個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 69個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に。テクスチャ2つを有効にし、Distant Horizons の描画距離を 1024 に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -40,11 +40,8 @@ L_Ender's Cataclysm / Mutant Iceologer / Peyro's Scythes & Spells / Iron's Spell
 **探索・構造物・バイオーム**
 Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better Trial Chambers / Integrated Stronghold / MES - Moog's End Structures / End Remastered / Feur Extension Fossil / aleki's Nifty Ships
 
-**地形・バイオーム・村・道**
-Tectonic v2（大陸と巨大な山脈）/ Terralith（バイオーム95種以上）/ William Wythers' Overhauled Overworld（バニラのバイオームを作り直す）/ ChoiceTheorem's Overhauled Village（村の作り直し）/ RoadWeaver（村と村をつなぐ道）/ Streams Reflowing（山から海へ流れる川と湖）
-
 **装備・便利・調整**
-Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き）/ Heat and Climate（暑さ・寒さ・季節）
+Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き・体温）/ Heat and Climate（季節・作物の気候）
 
 **料理・農業・別世界（友達の追加分, v1.7.0〜）**
 Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハーブティー・ワイン作り）/ Cooking for Blockheads（キッチンで料理をまとめて作る）/ Mystical Agriculture + Agradditions（鉱石や資源を畑で育てる）/ Sakura（桜と和風の食べ物）/ TofuCraft Reload（豆腐の世界）/ Urushi（和風ブロックと隠世ディメンション）/ Better Advancements（進捗画面が見やすくなる）
@@ -53,22 +50,28 @@ Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハー�
 MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）/ ItemPhysic Lite（落ちたアイテムが寝転がる・水に浮く）/ Sound Physics Remastered（洞窟で響く・壁の向こうの音がこもる）/ First-person Model（一人称で自分の体が見える）/ Not Enough Animations（一人称でも手の動きが細かくなる）/ Camera Overhaul（歩く・曲がるときにカメラが揺れる）
 
 **前提mod**
-Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / GlitchCore / CreativeCore / Lithostitched / Cristel Lib / Cloth Config / Create / Supplementaries / Quark / Zeta / Moonlight Lib / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
+Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / GlitchCore / CreativeCore / Cloth Config / Create / Supplementaries / Quark / Zeta / Moonlight Lib / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
 
 > Create・Supplementaries・Quark は、Integrated Stronghold の最新版が必須にしているため入っています。
 
-## 地形生成について（v1.3.0〜）
+## 地形生成について（v1.9.0〜）
 
-- **新しいワールドで遊んでください。** 地形の mod は、まだ生成されていない場所にしか効きません。前からあるワールドだと、境目で地形がぶつ切りになります（Terralith は既存ワールドへの追加を公式に非推奨としています）
-- Tectonic は **v2 系（2.4.1）** を使っています。RoadWeaver が Tectonic v3 と組み合わせられないためです
-- Larion World Generation は 1.20.1 用が Fabric 版しかないので入れていません
-- Streams Reflowing は、ワールドを作るときにスポーン周りの地形を調べるので、最初の読み込みが少し長くなります
+- v1.3.0〜v1.8.0 に入れていた地形生成の mod（Tectonic / Terralith / WWOO / CTOV / RoadWeaver / Streams Reflowing と、前提の Lithostitched / Cristel Lib）は v1.9.0 で外しました。地形まわりは上の「探索・構造物・バイオーム」の10個だけです
+- bat をもう一度実行すると、この8個は `mods` から自動で消えます
+- **新しいワールドで遊んでください。** 地形の mod を入れていたころのワールドをそのまま開くと、バイオームが見つからない警告が出たり、境目で地形が切れたりします
 
-## 暑さ・寒さについて（v1.6.0〜）
+## 暑さ・寒さについて（v1.9.0〜）
 
-- 暑さ・寒さのダメージと季節は **Heat and Climate** が担当します
-- Tough As Nails にも体温の仕組みがありますが、二重にダメージを受けないように bat が切っています（`config	oughasnails	emperature.toml` の `enable_temperature = false`）。喉の渇きは Tough As Nails のまま残ります
-- Tough As Nails の体温を使いたいときは、上の設定を `true` に戻してください。次に bat を実行すると、また `false` に戻ります
+- 体温（暑さ・寒さのダメージ）は **Tough As Nails** が担当します。喉の渇きも Tough As Nails です
+- **Heat and Climate** は、季節と作物の気候だけを担当します。二重にダメージを受けないように、bat が Heat and Climate の気候ダメージと気候表示（HUD）を切っています
+  - `config\dcs_climate-common.toml` の `"Enable Climate Damage" = false`
+  - `config\dcs_climate-client.toml` の `"Show Climate HUD" = false`
+- v1.6.0〜v1.8.0 は逆に Heat and Climate の体温を使っていました。v1.9.0 の bat を実行すると、Tough As Nails の `enable_temperature` も `true` に戻します
+- **サーバーでも同じ設定にしてください**（[server-mods.md](server-mods.md) の「サーバーの設定」）
+
+## サーバーを立てるとき
+
+サーバーに入れる mod の一覧は [server-mods.md](server-mods.md) にあります。影・マント・ItemPhysic Lite などのクライアント専用 mod をサーバーに入れると、起動時にクラッシュします（`Attempted to load class net/minecraft/client/... for invalid dist DEDICATED_SERVER`）。
 
 ## 遠くまで見えるようにする（Distant Horizons）
 

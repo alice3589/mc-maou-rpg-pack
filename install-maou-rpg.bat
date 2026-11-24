@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.8.0'
+$PackVersion = '1.9.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -51,14 +51,6 @@ $Mods = @(
     @('endrem_forge-5.3.3-R-1.20.1.jar', 'https://cdn.modrinth.com/data/ZJTGwAND/versions/SQS2aSUl/endrem_forge-5.3.3-R-1.20.1.jar', 'b4df41de8439e834a493fe59842709ef33ecfa82'),
     @('feur_extension_fossil-1.20.1-forge.jar', 'https://cdn.modrinth.com/data/yGr5XHdT/versions/flNgX6Hq/feur_extension_fossil-1.20.1-forge.jar', '30924088094cecbc8837a8c21f3c55fedcd63450'),
     @('alekiNiftyShips-FORGE-1.20.1-1.0.14.jar', 'https://cdn.modrinth.com/data/vuNeeDyl/versions/VX4fjmf1/alekiNiftyShips-FORGE-1.20.1-1.0.14.jar', 'c42aaab43cd524c45c4065996cc06b9b48c5682a'),
-    @('roadweaver-forge-2.3.2-1.20.1.jar', 'https://cdn.modrinth.com/data/6jk8Pote/versions/P3MGw68X/roadweaver-forge-2.3.2-1.20.1.jar', '9e55a5e759d2d9eb1be2cb1957c63b7087e6e62f'),
-    @('lithostitched-forge-1.20.1-1.4.12.jar', 'https://cdn.modrinth.com/data/XaDC71GB/versions/Uqt1Zm1l/lithostitched-forge-1.20.1-1.4.12.jar', 'c8a23f9c1975f11a8d10110aa862251a6043db78'),
-    @('Terralith_1.20.x_v2.5.4.jar', 'https://cdn.modrinth.com/data/8oi3bsk5/versions/WeYhEb5d/Terralith_1.20.x_v2.5.4.jar', '79e1409b8db4ce86df9d6d6730f09c4bd8860a30'),
-    @('[forge]ctov-3.4.14.jar', 'https://cdn.modrinth.com/data/fgmhI8kH/versions/o7mg6MeV/%5Bforge%5Dctov-3.4.14.jar', '8fa73fd4c5ae58636e159e54321651adf555ac44'),
-    @('WWOO-FABRIC+FORGE+QUILT-2.0.0.jar', 'https://cdn.modrinth.com/data/II7t6llZ/versions/cNiETBJi/WWOO-FABRIC%2BFORGE%2BQUILT-2.0.0.jar', 'a1241d62fbf021013a8bd54d838245a044facfaf'),
-    @('cristellib-1.1.6-forge.jar', 'https://cdn.modrinth.com/data/cl223EMc/versions/DOsSK4NK/cristellib-1.1.6-forge.jar', '524ecf0f93f28be2f5db21d87dd81bdbc1a450e1'),
-    @('StreamsReflowing-1.20.1-forge-2.17.5.jar', 'https://cdn.modrinth.com/data/oLS8HdJ1/versions/u6OCuSKK/StreamsReflowing-1.20.1-forge-2.17.5.jar', 'ef17f2e65210a99a929bf80d3faeafbc3edf5fab'),
-    @('tectonic-forge-1.20.1-2.4.1.jar', 'https://cdn.modrinth.com/data/lWDHr9jE/versions/ubqOXeYf/tectonic-forge-1.20.1-2.4.1.jar', '55412e1b8ef36cd8eabef83d47f9377e78904f65'),
     @('fantasy-armor-1.3.1-1.20.1-forge.jar', 'https://cdn.modrinth.com/data/oVmpjYQ5/versions/e2QSYfvf/fantasy-armor-1.3.1-1.20.1-forge.jar', '270d1b008faf53015a4223923671d9e375e9ff81'),
     @('wider_ender_chests-forge-1.20.1-1.0.4.jar', 'https://cdn.modrinth.com/data/EDVt0J2I/versions/D91QPP3a/wider_ender_chests-forge-1.20.1-1.0.4.jar', '4bf753f31205a66a5502ba1875f7daf011e94e67'),
     @('Pehkui-3.8.2+1.20.1-forge.jar', 'https://cdn.modrinth.com/data/t5W7Jfwy/versions/SQpqSgAE/Pehkui-3.8.2%2B1.20.1-forge.jar', '4bc816efdd8e5e2a97423313674401351710e403'),
@@ -293,79 +285,33 @@ if (Test-Path -LiteralPath $Dh) {
 }
 Say "    Distant Horizons: render distance $DhRenderDistance chunks"
 
-# Heat and Climate handles hot/cold damage, so turn off the body temperature of Tough As Nails
-# (thirst of Tough As Nails stays on). Default TAN 9.2.0 temperature.toml with enable_temperature = false.
+# Body temperature: Tough As Nails handles hot/cold (v1.9.0~). Heat and Climate keeps seasons and
+# climate for crops, but its climate damage and climate HUD are turned off so nothing is doubled.
+# TAN 9.2.0 has enable_temperature = true by default, so only an old "false" (set by v1.6.0-v1.8.0) is changed.
 $TanDir = Join-Path (Join-Path $GameDir 'config') 'toughasnails'
 $Tan = Join-Path $TanDir 'temperature.toml'
-New-Item -ItemType Directory -Force -Path $TanDir | Out-Null
 if (Test-Path -LiteralPath $Tan) {
     $t = [IO.File]::ReadAllText($Tan)
-    $t2 = [regex]::Replace($t, '(?m)^(\s*enable_temperature\s*=\s*)true', '${1}false')
-    if ($t2 -ne $t) { [IO.File]::WriteAllText($Tan, $t2); Say '    Tough As Nails: body temperature turned off (Heat and Climate is used instead)' }
-} else {
-    $TanDefault = @'
-
-[general]
-	#Duration of heating or cooling effects given by consuming items.
-	consumable_effect_duration = 1200
-	#Number of ticks to delay changing the player's temperature after their temperature changes.
-	temperature_change_delay = 500
-	#Number of ticks to delay changing the player's temperature after their temperature changes when affected by a player-based temperature modifier.
-	player_temperature_change_delay = 125
-	#The order in which to apply built-in temperature modifiers
-	temperature_modifier_order = ["player_modifiers", "item_modifier", "armor_modifier", "internal_modifier"]
-	#Number of ticks to delay taking damage when icy or hot.
-	extremity_damage_delay = 500
-	#Number of ticks to delay changing the player's temperature after their temperature changes from consuming a heating or cooling item.
-	internal_temperature_change_delay = 20
-	#Number of ticks to delay changing the player's temperature after their temperature changes when wearing armor.
-	armor_temperature_change_delay = 50
-	#Number of ticks to delay changing the player's temperature after their temperature changes when holding an item.
-	handheld_temperature_change_delay = 375
-	#Whether or not Climate Clemency should be granted when respawning.
-	climate_clemency_respawning = false
-	#Number of ticks for the duration of Climate Clemency.
-	climate_clemency_duration = 6000
-	#Number of ticks to delay changing the player's temperature after their temperature changes when rebounding from an extreme temperature.
-	extremity_rebound_temperature_change_delay = 250
-
-[altitude]
-	#Y level to drop the temperature at when above
-	temperature_drop_altitude = 160
-	#Y level to rise the temperature at when below
-	temperature_rise_altitude = -32
-	#Y level above which environmental modifiers are applied
-	environmental_modifier_altitude = 50
-
-[immersion]
-	#Number of ticks a player stays wet for after touching water, rain or snow.
-	wet_ticks = 40
-	#Amount to change the temperature by when in powdered snow.
-	powdered_snow_temperature_change = -2
-	#Amount to change the temperature by when snowing.
-	snow_temperature_change = -1
-	#Amount to change the temperature by when wet.
-	wet_temperature_change = -1
-	#Amount to change the temperature by when on fire.
-	on_fire_temperature_change = 2
-
-[blocks]
-	#The proximity which constitutes near a heat or cool source
-	near_heat_cool_proximity = 8
-
-[toggles]
-	#Enable or disable temperature.
-	enable_temperature = false
-
-[time]
-	#Amount to change the temperature at night when the original temperature is hot.
-	night_hot_temperature_change = -2
-	#Amount to change the temperature at night when the original temperature is not hot.
-	night_temperature_change = -1
-'@
-    [IO.File]::WriteAllText($Tan, ($TanDefault -replace "`r`n", "`n") + "`n")
-    Say '    Tough As Nails: body temperature turned off (Heat and Climate is used instead)'
+    $t2 = [regex]::Replace($t, '(?m)^(\s*enable_temperature\s*=\s*)false', '${1}true')
+    if ($t2 -ne $t) { [IO.File]::WriteAllText($Tan, $t2) }
 }
+Say '    Tough As Nails: body temperature on'
+
+# Set one Heat and Climate option. If the file does not exist yet, write only that option;
+# Forge fills in the other options with their defaults on first start.
+function Set-HacOption($file, $section, $key, $value) {
+    $line = "`t""$key"" = $value"
+    if (Test-Path -LiteralPath $file) {
+        $t = [IO.File]::ReadAllText($file)
+        $t2 = [regex]::Replace($t, '(?m)^(\s*"' + [regex]::Escape($key) + '"\s*=\s*)\S+', ('${1}' + $value))
+        if ($t2 -ne $t) { [IO.File]::WriteAllText($file, $t2) }
+    } else {
+        [IO.File]::WriteAllText($file, "[$section]`n$line`n")
+    }
+}
+Set-HacOption (Join-Path $GameDir 'config\dcs_climate-common.toml') 'climate_config' 'Enable Climate Damage' 'false'
+Set-HacOption (Join-Path $GameDir 'config\dcs_climate-client.toml') 'render_config' 'Show Climate HUD' 'false'
+Say '    Heat and Climate: climate damage off, climate HUD off (seasons and crops stay)'
 
 # --- 4. Launcher profile ---
 Say '[4/4] Adding the launcher profile ...'
