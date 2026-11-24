@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.5.0'
+$PackVersion = '1.6.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -92,7 +92,8 @@ $Mods = @(
     @('Zeta-1.0-31.jar', 'https://cdn.modrinth.com/data/MVARlG2f/versions/mSER3jBI/Zeta-1.0-31.jar', '8c4a8ef0444b53ff408d5b89126285031081d92f'),
     @('moonlight-1.20-2.16.39-forge.jar', 'https://cdn.modrinth.com/data/twkfQtEc/versions/rF6052yd/moonlight-1.20-2.16.39-forge.jar', '12405de298c0d6c8ba53effdc5c8f28edee3aadc'),
     @('solcarrot-1.20.1-1.15.1.jar', 'https://mediafilez.forgecdn.net/files/4888/575/solcarrot-1.20.1-1.15.1.jar', 'f7fa1fd0c633b10f98d7f0f97766b95aac1a2dc0'),
-    @('PeyroScythe-Forge-1.20.1-1.3.3.jar', 'https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar', '70cbd842c70c2f3967177ce60feabc8a2b60012f')
+    @('PeyroScythe-Forge-1.20.1-1.3.3.jar', 'https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar', '70cbd842c70c2f3967177ce60feabc8a2b60012f'),
+    @('HeatAndClimate-1.20.1-v5.0.6.jar', 'https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar', 'f8e5dab4794c54fb3cff27ac6e814778bb416d38')
 )
 $Shader = @('ComplementaryUnbound_r5.10.zip', 'https://cdn.modrinth.com/data/R6NEzAwj/versions/QJiYQisE/ComplementaryUnbound_r5.10.zip', '7a9a6b667b89d6b442837c5c367cd6cc8356b400')
 
@@ -233,6 +234,80 @@ if (-not (Test-Path -LiteralPath $oc)) {
 }
 $opt = Join-Path $GameDir 'options.txt'
 if (-not (Test-Path -LiteralPath $opt)) { [IO.File]::WriteAllText($opt, "lang:ja_jp`n") }
+
+# Heat and Climate handles hot/cold damage, so turn off the body temperature of Tough As Nails
+# (thirst of Tough As Nails stays on). Default TAN 9.2.0 temperature.toml with enable_temperature = false.
+$TanDir = Join-Path (Join-Path $GameDir 'config') 'toughasnails'
+$Tan = Join-Path $TanDir 'temperature.toml'
+New-Item -ItemType Directory -Force -Path $TanDir | Out-Null
+if (Test-Path -LiteralPath $Tan) {
+    $t = [IO.File]::ReadAllText($Tan)
+    $t2 = [regex]::Replace($t, '(?m)^(\s*enable_temperature\s*=\s*)true', '${1}false')
+    if ($t2 -ne $t) { [IO.File]::WriteAllText($Tan, $t2); Say '    Tough As Nails: body temperature turned off (Heat and Climate is used instead)' }
+} else {
+    $TanDefault = @'
+
+[general]
+	#Duration of heating or cooling effects given by consuming items.
+	consumable_effect_duration = 1200
+	#Number of ticks to delay changing the player's temperature after their temperature changes.
+	temperature_change_delay = 500
+	#Number of ticks to delay changing the player's temperature after their temperature changes when affected by a player-based temperature modifier.
+	player_temperature_change_delay = 125
+	#The order in which to apply built-in temperature modifiers
+	temperature_modifier_order = ["player_modifiers", "item_modifier", "armor_modifier", "internal_modifier"]
+	#Number of ticks to delay taking damage when icy or hot.
+	extremity_damage_delay = 500
+	#Number of ticks to delay changing the player's temperature after their temperature changes from consuming a heating or cooling item.
+	internal_temperature_change_delay = 20
+	#Number of ticks to delay changing the player's temperature after their temperature changes when wearing armor.
+	armor_temperature_change_delay = 50
+	#Number of ticks to delay changing the player's temperature after their temperature changes when holding an item.
+	handheld_temperature_change_delay = 375
+	#Whether or not Climate Clemency should be granted when respawning.
+	climate_clemency_respawning = false
+	#Number of ticks for the duration of Climate Clemency.
+	climate_clemency_duration = 6000
+	#Number of ticks to delay changing the player's temperature after their temperature changes when rebounding from an extreme temperature.
+	extremity_rebound_temperature_change_delay = 250
+
+[altitude]
+	#Y level to drop the temperature at when above
+	temperature_drop_altitude = 160
+	#Y level to rise the temperature at when below
+	temperature_rise_altitude = -32
+	#Y level above which environmental modifiers are applied
+	environmental_modifier_altitude = 50
+
+[immersion]
+	#Number of ticks a player stays wet for after touching water, rain or snow.
+	wet_ticks = 40
+	#Amount to change the temperature by when in powdered snow.
+	powdered_snow_temperature_change = -2
+	#Amount to change the temperature by when snowing.
+	snow_temperature_change = -1
+	#Amount to change the temperature by when wet.
+	wet_temperature_change = -1
+	#Amount to change the temperature by when on fire.
+	on_fire_temperature_change = 2
+
+[blocks]
+	#The proximity which constitutes near a heat or cool source
+	near_heat_cool_proximity = 8
+
+[toggles]
+	#Enable or disable temperature.
+	enable_temperature = false
+
+[time]
+	#Amount to change the temperature at night when the original temperature is hot.
+	night_hot_temperature_change = -2
+	#Amount to change the temperature at night when the original temperature is not hot.
+	night_temperature_change = -1
+'@
+    [IO.File]::WriteAllText($Tan, ($TanDefault -replace "`r`n", "`n") + "`n")
+    Say '    Tough As Nails: body temperature turned off (Heat and Climate is used instead)'
+}
 
 # --- 4. Launcher profile ---
 Say '[4/4] Adding the launcher profile ...'
