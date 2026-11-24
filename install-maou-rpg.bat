@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.9.0'
+$PackVersion = '1.10.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -85,7 +85,6 @@ $Mods = @(
     @('moonlight-1.20-2.16.39-forge.jar', 'https://cdn.modrinth.com/data/twkfQtEc/versions/rF6052yd/moonlight-1.20-2.16.39-forge.jar', '12405de298c0d6c8ba53effdc5c8f28edee3aadc'),
     @('solcarrot-1.20.1-1.15.1.jar', 'https://mediafilez.forgecdn.net/files/4888/575/solcarrot-1.20.1-1.15.1.jar', 'f7fa1fd0c633b10f98d7f0f97766b95aac1a2dc0'),
     @('PeyroScythe-Forge-1.20.1-1.3.3.jar', 'https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar', '70cbd842c70c2f3967177ce60feabc8a2b60012f'),
-    @('HeatAndClimate-1.20.1-v5.0.6.jar', 'https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar', 'f8e5dab4794c54fb3cff27ac6e814778bb416d38'),
     @('architectury-9.1.13-forge.jar', 'https://cdn.modrinth.com/data/lhGA9TYQ/versions/tBWqtdBO/architectury-9.1.13-forge.jar', 'ef7558f149fc5db623f15aa7bf942f7ead5b8f0d'),
     @('letsdo-API-forge-1.2.15-forge.jar', 'https://cdn.modrinth.com/data/4XJZeZbM/versions/uEaTMht9/letsdo-API-forge-1.2.15-forge.jar', 'a261043a45097d861a13a63ebdbb0ca350e06a63'),
     @('mysterious_mountain_lib-1.6.34-1.20.1.jar', 'https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar', '4fb6e35edf9384fde736cd9ee972468d65f61dce'),
@@ -285,8 +284,7 @@ if (Test-Path -LiteralPath $Dh) {
 }
 Say "    Distant Horizons: render distance $DhRenderDistance chunks"
 
-# Body temperature: Tough As Nails handles hot/cold (v1.9.0~). Heat and Climate keeps seasons and
-# climate for crops, but its climate damage and climate HUD are turned off so nothing is doubled.
+# Body temperature: Tough As Nails handles hot/cold (Heat and Climate was removed in v1.10.0).
 # TAN 9.2.0 has enable_temperature = true by default, so only an old "false" (set by v1.6.0-v1.8.0) is changed.
 $TanDir = Join-Path (Join-Path $GameDir 'config') 'toughasnails'
 $Tan = Join-Path $TanDir 'temperature.toml'
@@ -296,22 +294,6 @@ if (Test-Path -LiteralPath $Tan) {
     if ($t2 -ne $t) { [IO.File]::WriteAllText($Tan, $t2) }
 }
 Say '    Tough As Nails: body temperature on'
-
-# Set one Heat and Climate option. If the file does not exist yet, write only that option;
-# Forge fills in the other options with their defaults on first start.
-function Set-HacOption($file, $section, $key, $value) {
-    $line = "`t""$key"" = $value"
-    if (Test-Path -LiteralPath $file) {
-        $t = [IO.File]::ReadAllText($file)
-        $t2 = [regex]::Replace($t, '(?m)^(\s*"' + [regex]::Escape($key) + '"\s*=\s*)\S+', ('${1}' + $value))
-        if ($t2 -ne $t) { [IO.File]::WriteAllText($file, $t2) }
-    } else {
-        [IO.File]::WriteAllText($file, "[$section]`n$line`n")
-    }
-}
-Set-HacOption (Join-Path $GameDir 'config\dcs_climate-common.toml') 'climate_config' 'Enable Climate Damage' 'false'
-Set-HacOption (Join-Path $GameDir 'config\dcs_climate-client.toml') 'render_config' 'Show Climate HUD' 'false'
-Say '    Heat and Climate: climate damage off, climate HUD off (seasons and crops stay)'
 
 # --- 4. Launcher profile ---
 Say '[4/4] Adding the launcher profile ...'

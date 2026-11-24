@@ -1,11 +1,12 @@
-# サーバーに入れるmod一覧（v1.9.0）
+# サーバーに入れる mod 一覧（v1.10.0）
 
-Forge **1.20.1-47.4.x** のサーバーの `mods` フォルダに、下の **58個** を入れます。
-配布用の bat が入れる 69個から、クライアント（各自のPC）専用の 11個を除いたものです。
+Forge **1.20.1-47.4.x** のサーバーの `mods` フォルダに、下の **57個** を入れます。
+配布用の bat が入れる 68個から、クライアント（各自の PC）専用の 11個を除いたものです。
 
-> この一覧は `install-maou-rpg.bat` の mod リストから作っています。bat の mod を変えたら、ここも合わせて直してください。
+> この一覧は `make-server-mods.py` が `install-maou-rpg.bat` の mod リストから作っています。
+> `python make-server-mods.py --out フォルダ` で、この jar 一式（とその zip）も作れます。
 
-## 入れるmod
+## 入れる mod
 
 ファイル名だけの一覧（コピー用）:
 
@@ -51,7 +52,6 @@ Zeta-1.0-31.jar
 moonlight-1.20-2.16.39-forge.jar
 solcarrot-1.20.1-1.15.1.jar
 PeyroScythe-Forge-1.20.1-1.3.3.jar
-HeatAndClimate-1.20.1-v5.0.6.jar
 architectury-9.1.13-forge.jar
 letsdo-API-forge-1.2.15-forge.jar
 mysterious_mountain_lib-1.6.34-1.20.1.jar
@@ -113,27 +113,26 @@ urushi-1.20.1-6.7.0.jar
 | 39 | [moonlight-1.20-2.16.39-forge.jar](https://cdn.modrinth.com/data/twkfQtEc/versions/rF6052yd/moonlight-1.20-2.16.39-forge.jar) | `12405de298c0d6c8ba53effdc5c8f28edee3aadc` |
 | 40 | [solcarrot-1.20.1-1.15.1.jar](https://mediafilez.forgecdn.net/files/4888/575/solcarrot-1.20.1-1.15.1.jar) | `f7fa1fd0c633b10f98d7f0f97766b95aac1a2dc0` |
 | 41 | [PeyroScythe-Forge-1.20.1-1.3.3.jar](https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar) | `70cbd842c70c2f3967177ce60feabc8a2b60012f` |
-| 42 | [HeatAndClimate-1.20.1-v5.0.6.jar](https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar) | `f8e5dab4794c54fb3cff27ac6e814778bb416d38` |
-| 43 | [architectury-9.1.13-forge.jar](https://cdn.modrinth.com/data/lhGA9TYQ/versions/tBWqtdBO/architectury-9.1.13-forge.jar) | `ef7558f149fc5db623f15aa7bf942f7ead5b8f0d` |
-| 44 | [letsdo-API-forge-1.2.15-forge.jar](https://cdn.modrinth.com/data/4XJZeZbM/versions/uEaTMht9/letsdo-API-forge-1.2.15-forge.jar) | `a261043a45097d861a13a63ebdbb0ca350e06a63` |
-| 45 | [mysterious_mountain_lib-1.6.34-1.20.1.jar](https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar) | `4fb6e35edf9384fde736cd9ee972468d65f61dce` |
-| 46 | [Cucumber-1.20.1-7.0.16.jar](https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar) | `88a9ec30e4acb5c80a3ae060ad70b79e945293c6` |
-| 47 | [balm-forge-1.20.1-7.3.44.jar](https://mediafilez.forgecdn.net/files/8969/708/balm-forge-1.20.1-7.3.44.jar) | `b3f8a6a5823d3b4f2dce19c8aea9373e24bcb443` |
-| 48 | [bagus_lib-1.20.1-5.6.1.jar](https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar) | `d62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba` |
-| 49 | [cookingforblockheads-forge-1.20.1-16.0.16.jar](https://mediafilez.forgecdn.net/files/9647/269/cookingforblockheads-forge-1.20.1-16.0.16.jar) | `bec451505c1173cccb6dcd648d8ccf53d72a95cf` |
-| 50 | [letsdo-bakery-forge-1.1.15.jar](https://cdn.modrinth.com/data/WFwYiVoG/versions/Jo8EwiDR/letsdo-bakery-forge-1.1.15.jar) | `c5cd44088089fca03f3291b851dcb0d00018fecb` |
-| 51 | [letsdo-brewery-forge-1.1.9.jar](https://cdn.modrinth.com/data/cV5LQXKx/versions/vqYszE4F/letsdo-brewery-forge-1.1.9.jar) | `50e5181e734dcfc599aa0eaac376ff4e312f63c2` |
-| 52 | [letsdo-herbalbrews-forge-1.0.12.jar](https://cdn.modrinth.com/data/Eh11TaTm/versions/qKfEj2BA/letsdo-herbalbrews-forge-1.0.12.jar) | `3de7feb383868a0db45351580d6ef5b05b776f16` |
-| 53 | [letsdo-vinery-forge-1.4.41.jar](https://cdn.modrinth.com/data/1DWmBJVA/versions/2I4cH49O/letsdo-vinery-forge-1.4.41.jar) | `68ed3fa9524bef601064f49f60a30423db2f8fdc` |
-| 54 | [MysticalAgradditions-1.20.1-7.0.12.jar](https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar) | `b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9` |
-| 55 | [MysticalAgriculture-1.20.1-7.0.24.jar](https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar) | `e8839d207456a47ed6a576469901a087319b505f` |
-| 56 | [Sakura-1.1.16-1.20.1.jar](https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar) | `03ce0fdaf0827d39b6223556aac25b39f5309323` |
-| 57 | [TofuCraftReload-1.20.1-5.18.4.0.jar](https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar) | `a3c1ef9f3d1f808f55ee34447747441e9f9f1195` |
-| 58 | [urushi-1.20.1-6.7.0.jar](https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar) | `5f9be08bf26b7750029aed63d7d4c20688e7065f` |
+| 42 | [architectury-9.1.13-forge.jar](https://cdn.modrinth.com/data/lhGA9TYQ/versions/tBWqtdBO/architectury-9.1.13-forge.jar) | `ef7558f149fc5db623f15aa7bf942f7ead5b8f0d` |
+| 43 | [letsdo-API-forge-1.2.15-forge.jar](https://cdn.modrinth.com/data/4XJZeZbM/versions/uEaTMht9/letsdo-API-forge-1.2.15-forge.jar) | `a261043a45097d861a13a63ebdbb0ca350e06a63` |
+| 44 | [mysterious_mountain_lib-1.6.34-1.20.1.jar](https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar) | `4fb6e35edf9384fde736cd9ee972468d65f61dce` |
+| 45 | [Cucumber-1.20.1-7.0.16.jar](https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar) | `88a9ec30e4acb5c80a3ae060ad70b79e945293c6` |
+| 46 | [balm-forge-1.20.1-7.3.44.jar](https://mediafilez.forgecdn.net/files/8969/708/balm-forge-1.20.1-7.3.44.jar) | `b3f8a6a5823d3b4f2dce19c8aea9373e24bcb443` |
+| 47 | [bagus_lib-1.20.1-5.6.1.jar](https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar) | `d62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba` |
+| 48 | [cookingforblockheads-forge-1.20.1-16.0.16.jar](https://mediafilez.forgecdn.net/files/9647/269/cookingforblockheads-forge-1.20.1-16.0.16.jar) | `bec451505c1173cccb6dcd648d8ccf53d72a95cf` |
+| 49 | [letsdo-bakery-forge-1.1.15.jar](https://cdn.modrinth.com/data/WFwYiVoG/versions/Jo8EwiDR/letsdo-bakery-forge-1.1.15.jar) | `c5cd44088089fca03f3291b851dcb0d00018fecb` |
+| 50 | [letsdo-brewery-forge-1.1.9.jar](https://cdn.modrinth.com/data/cV5LQXKx/versions/vqYszE4F/letsdo-brewery-forge-1.1.9.jar) | `50e5181e734dcfc599aa0eaac376ff4e312f63c2` |
+| 51 | [letsdo-herbalbrews-forge-1.0.12.jar](https://cdn.modrinth.com/data/Eh11TaTm/versions/qKfEj2BA/letsdo-herbalbrews-forge-1.0.12.jar) | `3de7feb383868a0db45351580d6ef5b05b776f16` |
+| 52 | [letsdo-vinery-forge-1.4.41.jar](https://cdn.modrinth.com/data/1DWmBJVA/versions/2I4cH49O/letsdo-vinery-forge-1.4.41.jar) | `68ed3fa9524bef601064f49f60a30423db2f8fdc` |
+| 53 | [MysticalAgradditions-1.20.1-7.0.12.jar](https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar) | `b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9` |
+| 54 | [MysticalAgriculture-1.20.1-7.0.24.jar](https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar) | `e8839d207456a47ed6a576469901a087319b505f` |
+| 55 | [Sakura-1.1.16-1.20.1.jar](https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar) | `03ce0fdaf0827d39b6223556aac25b39f5309323` |
+| 56 | [TofuCraftReload-1.20.1-5.18.4.0.jar](https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar) | `a3c1ef9f3d1f808f55ee34447747441e9f9f1195` |
+| 57 | [urushi-1.20.1-6.7.0.jar](https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar) | `5f9be08bf26b7750029aed63d7d4c20688e7065f` |
 
-## 入れないmod（クライアント専用）
+## 入れない mod（クライアント専用）
 
-各自のPCには bat が入れます。サーバーには**入れないでください**。
+各自の PC には bat が入れます。サーバーには**入れないでください**。
 
 | ファイル | 理由 |
 | --- | --- |
@@ -141,42 +140,45 @@ urushi-1.20.1-6.7.0.jar
 | `oculus-mc1.20.1-1.8.0.jar` | 影MOD。サーバーに入れると起動時にクラッシュする |
 | `embeddium-0.3.31+mc1.20.1.jar` | 描画の高速化（Oculus 用） |
 | `ItemPhysicLite_FORGE_v1.6.13_mc1.20.1.jar` | 落ちたアイテムの見た目。サーバーに入れると起動時にクラッシュする |
-| `CreativeCore_FORGE_v2.12.42_mc1.20.1.jar` | ItemPhysic Lite の前提。ほかに使うmodがない |
-| `sound-physics-remastered-forge-1.20.1-1.5.1.jar` | 音の響き（自分のPCで鳴らす音だけ） |
+| `CreativeCore_FORGE_v2.12.42_mc1.20.1.jar` | ItemPhysic Lite の前提。ほかに使う mod がない |
+| `sound-physics-remastered-forge-1.20.1-1.5.1.jar` | 音の響き（自分の PC で鳴らす音だけ） |
 | `firstperson-forge-2.7.3-mc1.20.1.jar` | 一人称で体が見える（クライアント専用） |
 | `notenoughanimations-forge-1.12.7-mc1.20.1.jar` | 手の動き（クライアント専用） |
 | `CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar` | カメラの揺れ |
-| `cloth-config-11.1.136-forge.jar` | Camera Overhaul の設定画面用。ほかに使うmodがない |
+| `cloth-config-11.1.136-forge.jar` | Camera Overhaul の設定画面用。ほかに使う mod がない |
 | `BetterAdvancements-Forge-1.20.1-0.4.2.60.jar` | 進捗画面の見た目だけ |
 
 Distant Horizons はサーバーにも入れます（サーバー側で遠くの地形を作って配れるようになります）。
 
-## v1.8.0 から外したmod（サーバーからも消す）
+## 前の版から外した mod（サーバーからも消す）
 
-地形生成のmodを、探索・構造物系の10個（Explorify〜Nifty Ships）だけにしたため外しました。
 サーバーの `mods` にまだあれば取り除いてください。
 
-```
-tectonic-forge-1.20.1-2.4.1.jar
-Terralith_1.20.x_v2.5.4.jar
-WWOO-FABRIC+FORGE+QUILT-2.0.0.jar
-[forge]ctov-3.4.14.jar
-roadweaver-forge-2.3.2-1.20.1.jar
-StreamsReflowing-1.20.1-forge-2.17.5.jar
-lithostitched-forge-1.20.1-1.4.12.jar
-cristellib-1.1.6-forge.jar
-```
+| 外した版 | ファイル |
+| --- | --- |
+| v1.9.0 | `tectonic-forge-1.20.1-2.4.1.jar` |
+| v1.9.0 | `Terralith_1.20.x_v2.5.4.jar` |
+| v1.9.0 | `WWOO-FABRIC+FORGE+QUILT-2.0.0.jar` |
+| v1.9.0 | `[forge]ctov-3.4.14.jar` |
+| v1.9.0 | `roadweaver-forge-2.3.2-1.20.1.jar` |
+| v1.9.0 | `StreamsReflowing-1.20.1-forge-2.17.5.jar` |
+| v1.9.0 | `lithostitched-forge-1.20.1-1.4.12.jar` |
+| v1.9.0 | `cristellib-1.1.6-forge.jar` |
+| v1.10.0 | `HeatAndClimate-1.20.1-v5.0.6.jar` |
 
-**外したらワールドを作り直してください。** 今のワールドは Terralith などのバイオームで作られているので、
-そのまま使うとバイオームが見つからない警告が出たり、地形の境目が切れたりします。
+- v1.9.0: 地形生成の mod を、探索・構造物系の10個（Explorify〜Nifty Ships）だけにしたため
+- v1.10.0: Heat and Climate を外したため（体温は Tough As Nails だけ）
+
+**地形の mod を外したら、ワールドを作り直してください。** Terralith などのバイオームで作られたワールドを
+そのまま使うと、バイオームが見つからない警告が出たり、地形の境目が切れたりします。
+Heat and Climate のブロックやアイテムも、外すとワールドから消えます。
 
 ## サーバーの設定（config）
 
-体温は v1.9.0 から Tough As Nails が担当します。サーバーの `config` フォルダで次の2か所を確認してください。
+体温は Tough As Nails が担当します。v1.6.0〜v1.8.0 の設定が残っている場合は、次を確認してください。
 
 | ファイル | 項目 | 値 |
 | --- | --- | --- |
 | `config/toughasnails/temperature.toml` | `enable_temperature` | `true` |
-| `config/dcs_climate-common.toml` | `"Enable Climate Damage"` | `false` |
 
-書き換えたらサーバーを再起動します。季節や作物の気候は Heat and Climate のまま動きます。
+ファイルがなければ、そのままで大丈夫です（最初から `true` です）。書き換えたらサーバーを再起動します。

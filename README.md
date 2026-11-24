@@ -1,7 +1,7 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
 ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 69個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 68個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +23,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 69個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 68個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に。テクスチャ2つを有効にし、Distant Horizons の描画距離を 1024 に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -41,7 +41,7 @@ L_Ender's Cataclysm / Mutant Iceologer / Peyro's Scythes & Spells / Iron's Spell
 Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better Trial Chambers / Integrated Stronghold / MES - Moog's End Structures / End Remastered / Feur Extension Fossil / aleki's Nifty Ships
 
 **装備・便利・調整**
-Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き・体温）/ Heat and Climate（季節・作物の気候）
+Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き・体温）
 
 **料理・農業・別世界（友達の追加分, v1.7.0〜）**
 Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハーブティー・ワイン作り）/ Cooking for Blockheads（キッチンで料理をまとめて作る）/ Mystical Agriculture + Agradditions（鉱石や資源を畑で育てる）/ Sakura（桜と和風の食べ物）/ TofuCraft Reload（豆腐の世界）/ Urushi（和風ブロックと隠世ディメンション）/ Better Advancements（進捗画面が見やすくなる）
@@ -60,18 +60,16 @@ Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2
 - bat をもう一度実行すると、この8個は `mods` から自動で消えます
 - **新しいワールドで遊んでください。** 地形の mod を入れていたころのワールドをそのまま開くと、バイオームが見つからない警告が出たり、境目で地形が切れたりします
 
-## 暑さ・寒さについて（v1.9.0〜）
+## 暑さ・寒さについて（v1.10.0〜）
 
-- 体温（暑さ・寒さのダメージ）は **Tough As Nails** が担当します。喉の渇きも Tough As Nails です
-- **Heat and Climate** は、季節と作物の気候だけを担当します。二重にダメージを受けないように、bat が Heat and Climate の気候ダメージと気候表示（HUD）を切っています
-  - `config\dcs_climate-common.toml` の `"Enable Climate Damage" = false`
-  - `config\dcs_climate-client.toml` の `"Show Climate HUD" = false`
-- v1.6.0〜v1.8.0 は逆に Heat and Climate の体温を使っていました。v1.9.0 の bat を実行すると、Tough As Nails の `enable_temperature` も `true` に戻します
+- 体温（暑さ・寒さのダメージ）と喉の渇きは、どちらも **Tough As Nails** が担当します
+- Heat and Climate は v1.10.0 で外しました（v1.6.0〜v1.9.0 に入っていました）。bat をもう一度実行すると `mods` から自動で消えます。Heat and Climate のブロックやアイテムはワールドから消えます
+- v1.6.0〜v1.8.0 の bat は Tough As Nails の体温を切っていました。今の bat を実行すると `config	oughasnails	emperature.toml` の `enable_temperature` を `true` に戻します
 - **サーバーでも同じ設定にしてください**（[server-mods.md](server-mods.md) の「サーバーの設定」）
 
 ## サーバーを立てるとき
 
-サーバーに入れる mod の一覧は [server-mods.md](server-mods.md) にあります。影・マント・ItemPhysic Lite などのクライアント専用 mod をサーバーに入れると、起動時にクラッシュします（`Attempted to load class net/minecraft/client/... for invalid dist DEDICATED_SERVER`）。
+サーバーに入れる mod の一覧は [server-mods.md](server-mods.md) にあります。`python make-server-mods.py --out フォルダ` を実行すると、サーバーの `mods` にそのまま入れられる jar 一式（と zip）を公式の配布元からダウンロードして作れます。再配布が許されていない mod もあるので、jar 一式は Release には付けていません。影・マント・ItemPhysic Lite などのクライアント専用 mod をサーバーに入れると、起動時にクラッシュします（`Attempted to load class net/minecraft/client/... for invalid dist DEDICATED_SERVER`）。
 
 ## 遠くまで見えるようにする（Distant Horizons）
 
@@ -91,7 +89,7 @@ bat が次の2つをダウンロードして、最初から有効にします（
 | [New Glowing Ores](https://modrinth.com/resourcepack/new-glowing-ores)（Border・1.20用 v1.3） | 鉱石の粒が縁取り付きで光る | GridExpert・CC BY-NC-SA 4.0 |
 | [PvP Swords](https://modrinth.com/resourcepack/short-pvp-swords)（1.20.1用 v1.0.1） | バニラの剣6種類が短くなる | All Rights Reserved |
 
-- ゲーム内でテクスチャを切り替えるときは、**ワールドに入ってから**「Esc → 設定 → リソースパック」で切り替えてください。タイトル画面で切り替えると、Heat and Climate の不具合で「読み込みに失敗」して全部外れます
+- ゲーム内でテクスチャを切り替えるときは、**ワールドに入ってから**「Esc → 設定 → リソースパック」で切り替えてください。（v1.9.0 までは、タイトル画面で切り替えると Heat and Climate の不具合で全部外れていました）
 - 自分で選んだ他のテクスチャは残ります。bat をもう一度実行すると、この2つはまた有効になります
 
 ### サーバーで New Glowing Ores を強制する
