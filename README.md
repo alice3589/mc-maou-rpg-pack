@@ -1,7 +1,7 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
 ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 68個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 72個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +23,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 68個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 72個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に。テクスチャ2つを有効にし、Distant Horizons の描画距離を 1024 に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -40,6 +40,9 @@ L_Ender's Cataclysm / Mutant Iceologer / Peyro's Scythes & Spells / Iron's Spell
 **探索・構造物・バイオーム**
 Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better Trial Chambers / Integrated Stronghold / MES - Moog's End Structures / End Remastered / Feur Extension Fossil / aleki's Nifty Ships
 
+**地形生成（v1.11.0〜）**
+Terralith（バイオーム95種以上）/ Tectonic 3（大陸と巨大な山脈）/ Incendium（ネザーの地形とバイオーム）
+
 **装備・便利・調整**
 Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き・体温）
 
@@ -50,15 +53,17 @@ Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハー�
 MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）/ ItemPhysic Lite（落ちたアイテムが寝転がる・水に浮く）/ Sound Physics Remastered（洞窟で響く・壁の向こうの音がこもる）/ First-person Model（一人称で自分の体が見える）/ Not Enough Animations（一人称でも手の動きが細かくなる）/ Camera Overhaul（歩く・曲がるときにカメラが揺れる）
 
 **前提mod**
-Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / GlitchCore / CreativeCore / Cloth Config / Create / Supplementaries / Quark / Zeta / Moonlight Lib / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
+Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / Lithostitched / GlitchCore / CreativeCore / Cloth Config / Create / Supplementaries / Quark / Zeta / Moonlight Lib / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
 
 > Create・Supplementaries・Quark は、Integrated Stronghold の最新版が必須にしているため入っています。
 
-## 地形生成について（v1.9.0〜）
+## 地形生成について（v1.11.0〜）
 
-- v1.3.0〜v1.8.0 に入れていた地形生成の mod（Tectonic / Terralith / WWOO / CTOV / RoadWeaver / Streams Reflowing と、前提の Lithostitched / Cristel Lib）は v1.9.0 で外しました。地形まわりは上の「探索・構造物・バイオーム」の10個だけです
-- bat をもう一度実行すると、この8個は `mods` から自動で消えます
-- **新しいワールドで遊んでください。** 地形の mod を入れていたころのワールドをそのまま開くと、バイオームが見つからない警告が出たり、境目で地形が切れたりします
+- オーバーワールドは **Terralith + Tectonic 3**、ネザーは **Incendium** で作り直されます
+- Tectonic は v3 系（3.0.17）です。前提の Lithostitched も入ります
+- v1.3.0〜v1.8.0 に入れていた WWOO / CTOV / RoadWeaver / Streams Reflowing / Cristel Lib は入れていません。前の版の bat で入ったものは、bat をもう一度実行すると自動で消えます
+- **Nullscape（エンドの地形）は入れていません。** Stellarity と同じエンドのファイル（`the_end.json` やエンドのバイオーム）を書き換えるので、両方入れるとエンドがおかしくなります。エンドは Stellarity が担当します
+- **新しいワールドで遊んでください。** 地形の mod は、まだ生成されていない場所にしか効きません。前からあるワールドだと、境目で地形がぶつ切りになります
 
 ## 暑さ・寒さについて（v1.10.0〜）
 

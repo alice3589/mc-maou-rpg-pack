@@ -40,13 +40,11 @@ CLIENT_ONLY = {
 
 # 前の版から外した mod(サーバーからも消してもらう): (外した版, ファイル名)
 REMOVED = [
-    ('v1.9.0', 'tectonic-forge-1.20.1-2.4.1.jar'),
-    ('v1.9.0', 'Terralith_1.20.x_v2.5.4.jar'),
+    ('v1.9.0', 'tectonic-forge-1.20.1-2.4.1.jar'),  # v1.11.0 で 3.0.17 に入れ替え
     ('v1.9.0', 'WWOO-FABRIC+FORGE+QUILT-2.0.0.jar'),
     ('v1.9.0', '[forge]ctov-3.4.14.jar'),
     ('v1.9.0', 'roadweaver-forge-2.3.2-1.20.1.jar'),
     ('v1.9.0', 'StreamsReflowing-1.20.1-forge-2.17.5.jar'),
-    ('v1.9.0', 'lithostitched-forge-1.20.1-1.4.12.jar'),
     ('v1.9.0', 'cristellib-1.1.6-forge.jar'),
     ('v1.10.0', 'HeatAndClimate-1.20.1-v5.0.6.jar'),
 ]
@@ -106,11 +104,13 @@ def write_md(ver, mods):
     for v, r in REMOVED:
         w(f'| {v} | `{r}` |')
     w('')
-    w('- v1.9.0: 地形生成の mod を、探索・構造物系の10個（Explorify〜Nifty Ships）だけにしたため')
+    w('- v1.9.0: 地形生成の mod を外したため（Tectonic 2.4.1 は v1.11.0 で 3.0.17 に入れ替え）')
     w('- v1.10.0: Heat and Climate を外したため（体温は Tough As Nails だけ）\n')
-    w('**地形の mod を外したら、ワールドを作り直してください。** Terralith などのバイオームで作られたワールドを')
-    w('そのまま使うと、バイオームが見つからない警告が出たり、地形の境目が切れたりします。')
-    w('Heat and Climate のブロックやアイテムも、外すとワールドから消えます。\n')
+    w('## 地形生成（v1.11.0〜）\n')
+    w('Terralith・Tectonic 3（前提 Lithostitched）・Incendium（ネザー）を入れています。')
+    w('**地形の mod を入れ替えたら、ワールドを作り直してください。** 前のワールドをそのまま使うと、')
+    w('バイオームが見つからない警告が出たり、地形の境目が切れたりします。')
+    w('Nullscape は Stellarity と同じエンドのファイルを書き換えるので入れていません。\n')
     w('## サーバーの設定（config）\n')
     w('体温は Tough As Nails が担当します。v1.6.0〜v1.8.0 の設定が残っている場合は、次を確認してください。\n')
     w('| ファイル | 項目 | 値 |')

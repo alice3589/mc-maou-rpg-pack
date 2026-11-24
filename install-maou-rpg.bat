@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.10.0'
+$PackVersion = '1.11.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -51,6 +51,10 @@ $Mods = @(
     @('endrem_forge-5.3.3-R-1.20.1.jar', 'https://cdn.modrinth.com/data/ZJTGwAND/versions/SQS2aSUl/endrem_forge-5.3.3-R-1.20.1.jar', 'b4df41de8439e834a493fe59842709ef33ecfa82'),
     @('feur_extension_fossil-1.20.1-forge.jar', 'https://cdn.modrinth.com/data/yGr5XHdT/versions/flNgX6Hq/feur_extension_fossil-1.20.1-forge.jar', '30924088094cecbc8837a8c21f3c55fedcd63450'),
     @('alekiNiftyShips-FORGE-1.20.1-1.0.14.jar', 'https://cdn.modrinth.com/data/vuNeeDyl/versions/VX4fjmf1/alekiNiftyShips-FORGE-1.20.1-1.0.14.jar', 'c42aaab43cd524c45c4065996cc06b9b48c5682a'),
+    @('Terralith_1.20.x_v2.5.4.jar', 'https://cdn.modrinth.com/data/8oi3bsk5/versions/WeYhEb5d/Terralith_1.20.x_v2.5.4.jar', '79e1409b8db4ce86df9d6d6730f09c4bd8860a30'),
+    @('tectonic-3.0.17-forge-1.20.1.jar', 'https://cdn.modrinth.com/data/lWDHr9jE/versions/KLmvRxwh/tectonic-3.0.17-forge-1.20.1.jar', '07bfe13bc1bd75a6277f3d62bf92a549b33067a9'),
+    @('lithostitched-forge-1.20.1-1.4.12.jar', 'https://cdn.modrinth.com/data/XaDC71GB/versions/Uqt1Zm1l/lithostitched-forge-1.20.1-1.4.12.jar', 'c8a23f9c1975f11a8d10110aa862251a6043db78'),
+    @('Incendium_1.20.x_v5.3.5.jar', 'https://cdn.modrinth.com/data/ZVzW5oNS/versions/uUqarp2H/Incendium_1.20.x_v5.3.5.jar', '484556937b1b2dde2682144e7953e79bff717104'),
     @('fantasy-armor-1.3.1-1.20.1-forge.jar', 'https://cdn.modrinth.com/data/oVmpjYQ5/versions/e2QSYfvf/fantasy-armor-1.3.1-1.20.1-forge.jar', '270d1b008faf53015a4223923671d9e375e9ff81'),
     @('wider_ender_chests-forge-1.20.1-1.0.4.jar', 'https://cdn.modrinth.com/data/EDVt0J2I/versions/D91QPP3a/wider_ender_chests-forge-1.20.1-1.0.4.jar', '4bf753f31205a66a5502ba1875f7daf011e94e67'),
     @('Pehkui-3.8.2+1.20.1-forge.jar', 'https://cdn.modrinth.com/data/t5W7Jfwy/versions/SQpqSgAE/Pehkui-3.8.2%2B1.20.1-forge.jar', '4bc816efdd8e5e2a97423313674401351710e403'),
