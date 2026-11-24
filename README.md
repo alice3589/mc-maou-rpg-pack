@@ -1,7 +1,7 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
 ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 60個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 77個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +23,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 60個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 77個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -46,11 +46,14 @@ Tectonic v2（大陸と巨大な山脈）/ Terralith（バイオーム95種以�
 **装備・便利・調整**
 Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き）/ Heat and Climate（暑さ・寒さ・季節）
 
+**料理・農業・別世界（友達の追加分, v1.7.0〜）**
+Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハーブティー・ワイン作り）/ Cooking for Blockheads（キッチンで料理をまとめて作る）/ Mystical Agriculture + Agradditions（鉱石や資源を畑で育てる）/ Sakura（桜と和風の食べ物）/ TofuCraft Reload（豆腐の世界）/ Urushi（和風ブロックと隠世ディメンション）/ Better Advancements（進捗画面が見やすくなる）
+
 **見た目**
 MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）/ ItemPhysic Lite（落ちたアイテムが寝転がる・水に浮く）/ Sound Physics Remastered（洞窟で響く・壁の向こうの音がこもる）/ First-person Model（一人称で自分の体が見える）/ Not Enough Animations（一人称でも手の動きが細かくなる）/ Camera Overhaul（歩く・曲がるときにカメラが揺れる）
 
 **前提mod**
-Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / GlitchCore / CreativeCore / Lithostitched / Cristel Lib / Cloth Config / Create / Supplementaries / Quark / Zeta / Moonlight Lib
+Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / GlitchCore / CreativeCore / Lithostitched / Cristel Lib / Cloth Config / Create / Supplementaries / Quark / Zeta / Moonlight Lib / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
 
 > Create・Supplementaries・Quark は、Integrated Stronghold の最新版が必須にしているため入っています。
 

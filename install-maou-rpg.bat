@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.6.0'
+$PackVersion = '1.7.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -93,7 +93,24 @@ $Mods = @(
     @('moonlight-1.20-2.16.39-forge.jar', 'https://cdn.modrinth.com/data/twkfQtEc/versions/rF6052yd/moonlight-1.20-2.16.39-forge.jar', '12405de298c0d6c8ba53effdc5c8f28edee3aadc'),
     @('solcarrot-1.20.1-1.15.1.jar', 'https://mediafilez.forgecdn.net/files/4888/575/solcarrot-1.20.1-1.15.1.jar', 'f7fa1fd0c633b10f98d7f0f97766b95aac1a2dc0'),
     @('PeyroScythe-Forge-1.20.1-1.3.3.jar', 'https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar', '70cbd842c70c2f3967177ce60feabc8a2b60012f'),
-    @('HeatAndClimate-1.20.1-v5.0.6.jar', 'https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar', 'f8e5dab4794c54fb3cff27ac6e814778bb416d38')
+    @('HeatAndClimate-1.20.1-v5.0.6.jar', 'https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar', 'f8e5dab4794c54fb3cff27ac6e814778bb416d38'),
+    @('architectury-9.1.13-forge.jar', 'https://cdn.modrinth.com/data/lhGA9TYQ/versions/tBWqtdBO/architectury-9.1.13-forge.jar', 'ef7558f149fc5db623f15aa7bf942f7ead5b8f0d'),
+    @('letsdo-API-forge-1.2.15-forge.jar', 'https://cdn.modrinth.com/data/4XJZeZbM/versions/uEaTMht9/letsdo-API-forge-1.2.15-forge.jar', 'a261043a45097d861a13a63ebdbb0ca350e06a63'),
+    @('mysterious_mountain_lib-1.6.34-1.20.1.jar', 'https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar', '4fb6e35edf9384fde736cd9ee972468d65f61dce'),
+    @('Cucumber-1.20.1-7.0.16.jar', 'https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar', '88a9ec30e4acb5c80a3ae060ad70b79e945293c6'),
+    @('balm-forge-1.20.1-7.3.44.jar', 'https://mediafilez.forgecdn.net/files/8969/708/balm-forge-1.20.1-7.3.44.jar', 'b3f8a6a5823d3b4f2dce19c8aea9373e24bcb443'),
+    @('bagus_lib-1.20.1-5.6.1.jar', 'https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar', 'd62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba'),
+    @('BetterAdvancements-Forge-1.20.1-0.4.2.60.jar', 'https://cdn.modrinth.com/data/Q2OqKxDG/versions/EKwDaD23/BetterAdvancements-Forge-1.20.1-0.4.2.60.jar', '42be4c5315133a8059c27e15c41b22edc26e9a98'),
+    @('cookingforblockheads-forge-1.20.1-16.0.16.jar', 'https://mediafilez.forgecdn.net/files/9647/269/cookingforblockheads-forge-1.20.1-16.0.16.jar', 'bec451505c1173cccb6dcd648d8ccf53d72a95cf'),
+    @('letsdo-bakery-forge-1.1.15.jar', 'https://cdn.modrinth.com/data/WFwYiVoG/versions/Jo8EwiDR/letsdo-bakery-forge-1.1.15.jar', 'c5cd44088089fca03f3291b851dcb0d00018fecb'),
+    @('letsdo-brewery-forge-1.1.9.jar', 'https://cdn.modrinth.com/data/cV5LQXKx/versions/vqYszE4F/letsdo-brewery-forge-1.1.9.jar', '50e5181e734dcfc599aa0eaac376ff4e312f63c2'),
+    @('letsdo-herbalbrews-forge-1.0.12.jar', 'https://cdn.modrinth.com/data/Eh11TaTm/versions/qKfEj2BA/letsdo-herbalbrews-forge-1.0.12.jar', '3de7feb383868a0db45351580d6ef5b05b776f16'),
+    @('letsdo-vinery-forge-1.4.41.jar', 'https://cdn.modrinth.com/data/1DWmBJVA/versions/2I4cH49O/letsdo-vinery-forge-1.4.41.jar', '68ed3fa9524bef601064f49f60a30423db2f8fdc'),
+    @('MysticalAgradditions-1.20.1-7.0.12.jar', 'https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar', 'b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9'),
+    @('MysticalAgriculture-1.20.1-7.0.24.jar', 'https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar', 'e8839d207456a47ed6a576469901a087319b505f'),
+    @('Sakura-1.1.16-1.20.1.jar', 'https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar', '03ce0fdaf0827d39b6223556aac25b39f5309323'),
+    @('TofuCraftReload-1.20.1-5.18.4.0.jar', 'https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar', 'a3c1ef9f3d1f808f55ee34447747441e9f9f1195'),
+    @('urushi-1.20.1-6.7.0.jar', 'https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar', '5f9be08bf26b7750029aed63d7d4c20688e7065f')
 )
 $Shader = @('ComplementaryUnbound_r5.10.zip', 'https://cdn.modrinth.com/data/R6NEzAwj/versions/QJiYQisE/ComplementaryUnbound_r5.10.zip', '7a9a6b667b89d6b442837c5c367cd6cc8356b400')
 
