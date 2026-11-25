@@ -44,7 +44,7 @@ Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better T
 Terralith（バイオーム95種以上）/ Tectonic 3（大陸と巨大な山脈）/ Incendium（ネザーの地形とバイオーム）
 
 **装備・便利・調整**
-Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き・体温）
+Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き。体温は v1.13.3 から切っています）
 
 **料理・農業・別世界（友達の追加分, v1.7.0〜）**
 Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハーブティー・ワイン作り）/ Cooking for Blockheads（キッチンで料理をまとめて作る）/ Mystical Agriculture + Agradditions（鉱石や資源を畑で育てる）/ Sakura（桜と和風の食べ物）/ TofuCraft Reload（豆腐の世界）/ Urushi（和風ブロックと隠世ディメンション）/ Better Advancements（進捗画面が見やすくなる）
@@ -71,12 +71,13 @@ Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2
 - 原因: Spellbooks は Cataclysm 3.16 の古い Ancient Remnant の描画クラス（`Ancient_Remnant_Rework_Renderer`）を使っていますが、Cataclysm 3.24 以降でこのボスが作り直されてクラスがなくなりました。このパックの Cataclysm は 3.31 です。1.20.1 用の Spellbooks は 1.2.9 が最新で、新しい Cataclysm に対応した版はまだありません
 - 前提だった AzureLib も、ほかに使う mod がないので一緒に外しました。bat をもう一度実行すると `mods` から自動で消えます
 
-## 暑さ・寒さについて（v1.10.0〜）
+## 暑さ・寒さについて（v1.13.3〜）
 
-- 体温（暑さ・寒さのダメージ）と喉の渇きは、どちらも **Tough As Nails** が担当します
-- Heat and Climate は v1.10.0 で外しました（v1.6.0〜v1.9.0 に入っていました）。bat をもう一度実行すると `mods` から自動で消えます。Heat and Climate のブロックやアイテムはワールドから消えます
-- v1.6.0〜v1.8.0 の bat は Tough As Nails の体温を切っていました。今の bat を実行すると `config	oughasnails	emperature.toml` の `enable_temperature` を `true` に戻します
-- **サーバーでも同じ設定にしてください**（[server-mods.md](server-mods.md) の「サーバーの設定」）
+- **暑さ・寒さ（体温）は切っています。** 喉の渇きは **Tough As Nails** がそのまま担当します
+- bat を実行すると `config\toughasnails\temperature.toml` の `enable_temperature` を `false` にします
+- **サーバーで遊ぶときは、サーバーの設定が使われます**（入ったときにサーバーから送られてきます）。サーバーでも同じ設定にしてください（[server-mods.md](server-mods.md) の「サーバーの設定」）
+- 体温を戻したいときは、`enable_temperature` を `true` にします
+- Heat and Climate は v1.10.0 で外しました（v1.6.0〜v1.9.0 に入っていました）。bat をもう一度実行すると `mods` から自動で消えます
 
 ## サーバーを立てるとき
 

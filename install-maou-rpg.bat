@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.13.2'
+$PackVersion = '1.13.3'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -314,16 +314,20 @@ if (Test-Path -LiteralPath $Dh) {
 }
 Say "    Distant Horizons: render distance $DhRenderDistance chunks"
 
-# Body temperature: Tough As Nails handles hot/cold (Heat and Climate was removed in v1.10.0).
-# TAN 9.2.0 has enable_temperature = true by default, so only an old "false" (set by v1.6.0-v1.8.0) is changed.
+# Body temperature (hot/cold) is turned OFF since v1.13.3. Tough As Nails is kept for thirst.
+# TAN 9.2.0 has enable_temperature = true by default. GlitchCore keeps values already in the file and
+# fills in the rest, so a new file with only this key is fine. On a server, the server's file wins (synced on join).
 $TanDir = Join-Path (Join-Path $GameDir 'config') 'toughasnails'
 $Tan = Join-Path $TanDir 'temperature.toml'
+New-Item -ItemType Directory -Force -Path $TanDir | Out-Null
 if (Test-Path -LiteralPath $Tan) {
     $t = [IO.File]::ReadAllText($Tan)
-    $t2 = [regex]::Replace($t, '(?m)^(\s*enable_temperature\s*=\s*)false', '${1}true')
+    $t2 = [regex]::Replace($t, '(?m)^(\s*enable_temperature\s*=\s*)true', '${1}false')
     if ($t2 -ne $t) { [IO.File]::WriteAllText($Tan, $t2) }
+} else {
+    [IO.File]::WriteAllText($Tan, "[toggles]`n`tenable_temperature = false`n")
 }
-Say '    Tough As Nails: body temperature on'
+Say '    Tough As Nails: body temperature off (thirst stays on)'
 
 # --- 4. Launcher profile ---
 Say '[4/4] Adding the launcher profile ...'

@@ -1,4 +1,4 @@
-# サーバーに入れる mod 一覧（v1.13.2）
+# サーバーに入れる mod 一覧（v1.13.3）
 
 Forge **1.20.1-47.4.x** のサーバーの `mods` フォルダに、下の **69個** を入れます。
 配布用の bat が入れる 80個から、クライアント（各自の PC）専用の 11個を除いたものです。
@@ -200,10 +200,13 @@ Nullscape は Stellarity と同じエンドのファイルを書き換えるの�
 
 ## サーバーの設定（config）
 
-体温は Tough As Nails が担当します。v1.6.0〜v1.8.0 の設定が残っている場合は、次を確認してください。
+v1.13.3 から、暑さ・寒さ（体温）は切っています。Tough As Nails は喉の渇きのために残しています。
+**サーバーに入ると、サーバー側の Tough As Nails の設定がプレイヤーに送られて上書きされます。**
+そのため、サーバーでも次のように書き換えてください。
 
 | ファイル | 項目 | 値 |
 | --- | --- | --- |
-| `config/toughasnails/temperature.toml` | `enable_temperature` | `true` |
+| `config/toughasnails/temperature.toml` | `enable_temperature` | `false` |
 
-ファイルがなければ、そのままで大丈夫です（最初から `true` です）。書き換えたらサーバーを再起動します。
+ファイルは `[toggles]` の下にある `enable_temperature = true` を `false` に変えます。
+ファイルがなければ、サーバーを一度起動すると作られます。書き換えたらサーバーを再起動します。

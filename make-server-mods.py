@@ -112,12 +112,15 @@ def write_md(ver, mods):
     w('バイオームが見つからない警告が出たり、地形の境目が切れたりします。')
     w('Nullscape は Stellarity と同じエンドのファイルを書き換えるので入れていません。\n')
     w('## サーバーの設定（config）\n')
-    w('体温は Tough As Nails が担当します。v1.6.0〜v1.8.0 の設定が残っている場合は、次を確認してください。\n')
+    w('v1.13.3 から、暑さ・寒さ（体温）は切っています。Tough As Nails は喉の渇きのために残しています。')
+    w('**サーバーに入ると、サーバー側の Tough As Nails の設定がプレイヤーに送られて上書きされます。**')
+    w('そのため、サーバーでも次のように書き換えてください。\n')
     w('| ファイル | 項目 | 値 |')
     w('| --- | --- | --- |')
-    w('| `config/toughasnails/temperature.toml` | `enable_temperature` | `true` |')
+    w('| `config/toughasnails/temperature.toml` | `enable_temperature` | `false` |')
     w('')
-    w('ファイルがなければ、そのままで大丈夫です（最初から `true` です）。書き換えたらサーバーを再起動します。\n')
+    w('ファイルは `[toggles]` の下にある `enable_temperature = true` を `false` に変えます。')
+    w('ファイルがなければ、サーバーを一度起動すると作られます。書き換えたらサーバーを再起動します。\n')
     open(MD, 'w', encoding='utf-8', newline='\n').write('\n'.join(o))
     return srv
 
