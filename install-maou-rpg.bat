@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.13.0'
+$PackVersion = '1.13.1'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -129,6 +129,24 @@ function Say($t) { Write-Host $t }
 function Fail($t) { Write-Host ''; Write-Host "[ERROR] $t" -ForegroundColor Red; exit 1 }
 function Get-Sha1($p) { (Get-FileHash -Algorithm SHA1 -LiteralPath $p).Hash.ToLower() }
 
+# launcher_profiles.json is read and written with .NET JavaScriptSerializer, not ConvertFrom-Json:
+# PowerShell 5.1 ConvertFrom-Json stops when two keys differ only in case (e.g. profiles "Forge" and "forge").
+Add-Type -AssemblyName System.Web.Extensions
+function New-JsonSerializer {
+    $s = New-Object System.Web.Script.Serialization.JavaScriptSerializer
+    $s.MaxJsonLength = [int]::MaxValue
+    $s.RecursionLimit = 512
+    return $s
+}
+function Read-LauncherJson {
+    $d = (New-JsonSerializer).DeserializeObject([IO.File]::ReadAllText($ProfilesJson, [Text.Encoding]::UTF8))
+    if (-not ($d -is [System.Collections.Generic.Dictionary[string, object]])) { Fail "launcher_profiles.json is broken: $ProfilesJson" }
+    return $d
+}
+function Write-LauncherJson($d) {
+    [IO.File]::WriteAllText($ProfilesJson, (New-JsonSerializer).Serialize($d), (New-Object Text.UTF8Encoding $false))
+}
+
 # Download $url to $dest and check SHA-1. Skips the download when the file is already correct.
 function Get-Verified($url, $dest, $sha1) {
     if ((Test-Path -LiteralPath $dest) -and ((Get-Sha1 $dest) -eq $sha1)) { return 'ok' }
@@ -218,9 +236,9 @@ if (Test-Path -LiteralPath $ForgeJson) {
     }
     Say "    Java: $java"
     # The Forge installer overwrites the launcher profile named "forge". Remember it to put it back later.
-    $before = Get-Content -LiteralPath $ProfilesJson -Raw -Encoding UTF8 | ConvertFrom-Json
-    $p = $before.profiles.PSObject.Properties['forge']
-    if ($p) { $OldForgeProfile = $p.Value }
+    $before = Read-LauncherJson
+    $bp = $before['profiles']
+    if ($bp -and $bp.ContainsKey('forge')) { $OldForgeProfile = $bp['forge'] }
     Copy-Item -LiteralPath $ProfilesJson -Destination ($ProfilesJson + '.bak-maou-rpg') -Force
 
     $inst = Join-Path $Work "forge-$McVersion-$ForgeBuild-installer.jar"
@@ -313,32 +331,33 @@ Say '    Tough As Nails: body temperature on'
 Say '[4/4] Adding the launcher profile ...'
 $ramGB = [math]::Floor((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory / 1GB)
 if ($ramGB -ge 16) { $xmx = 8 } elseif ($ramGB -ge 12) { $xmx = 6 } else { $xmx = 4 }
-$json = Get-Content -LiteralPath $ProfilesJson -Raw -Encoding UTF8 | ConvertFrom-Json
+$json = Read-LauncherJson
+if (-not $json.ContainsKey('profiles')) { $json['profiles'] = [System.Collections.Generic.Dictionary[string,object]]::new() }
+$profiles = $json['profiles']
 if ($ForgeJustInstalled) {
-    $json.profiles.PSObject.Properties.Remove('forge')
-    if ($OldForgeProfile) { $json.profiles | Add-Member -NotePropertyName 'forge' -NotePropertyValue $OldForgeProfile }
+    [void]$profiles.Remove('forge')
+    if ($OldForgeProfile) { $profiles['forge'] = $OldForgeProfile }
 }
 $now = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.000Z')
 $created = $now
 $javaArgs = "-Xmx${xmx}G -Xms2G"
-$prev = $json.profiles.PSObject.Properties[$ProfileId]
-if ($prev) {
-    if ($prev.Value.created) { $created = $prev.Value.created }
-    if ($prev.Value.javaArgs) { $javaArgs = $prev.Value.javaArgs }   # keep your own memory setting
-    $json.profiles.PSObject.Properties.Remove($ProfileId)
+if ($profiles.ContainsKey($ProfileId)) {
+    $prev = $profiles[$ProfileId]
+    if ($prev.ContainsKey('created') -and $prev['created']) { $created = $prev['created'] }
+    if ($prev.ContainsKey('javaArgs') -and $prev['javaArgs']) { $javaArgs = $prev['javaArgs'] }   # keep your own memory setting
 }
-$prof = [pscustomobject][ordered]@{
-    name          = $ProfileName
-    type          = 'custom'
-    created       = $created
-    lastUsed      = $now
-    icon          = 'Redstone_Block'
-    lastVersionId = $ForgeVer
-    gameDir       = $GameDir
-    javaArgs      = $javaArgs
-}
-$json.profiles | Add-Member -NotePropertyName $ProfileId -NotePropertyValue $prof
-[IO.File]::WriteAllText($ProfilesJson, ($json | ConvertTo-Json -Depth 32), (New-Object Text.UTF8Encoding $false))
+$prof = [System.Collections.Generic.Dictionary[string,object]]::new()
+# [string] casts: values from cmdlets (Join-Path etc.) are PSObject-wrapped and JavaScriptSerializer cannot write those
+$prof['name']          = [string]$ProfileName
+$prof['type']          = 'custom'
+$prof['created']       = [string]$created
+$prof['lastUsed']      = [string]$now
+$prof['icon']          = 'Redstone_Block'
+$prof['lastVersionId'] = [string]$ForgeVer
+$prof['gameDir']       = [string]$GameDir
+$prof['javaArgs']      = [string]$javaArgs
+$profiles[$ProfileId] = $prof
+Write-LauncherJson $json
 
 Say ''
 Say 'DONE.'
