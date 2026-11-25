@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.13.1'
+$PackVersion = '1.13.2'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -41,8 +41,6 @@ $Mods = @(
     @('irons_spellbooks-1.20.1-3.16.4.jar', 'https://cdn.modrinth.com/data/s4OWxYQQ/versions/cBUZsds9/irons_spellbooks-1.20.1-3.16.4.jar', '7b41fc23ef37f9fa6f1ba747e5d24dae8ac4c3ed'),
     @('puffish_attributes-0.8.2-1.20-forge.jar', 'https://cdn.modrinth.com/data/FCFcFw09/versions/IG5KY4Qf/puffish_attributes-0.8.2-1.20-forge.jar', 'c6ff07c4ee3111b480fee577cb98c3671cf063b8'),
     @('incontrol-1.20-9.5.1.jar', 'https://cdn.modrinth.com/data/KpICtuVx/versions/gkF4yuGW/incontrol-1.20-9.5.1.jar', '57db24e561a4aa373ca6832816e010ed03bd6a1a'),
-    @('cataclysm_spellbooks-1.2.9-1.20.1-all.jar', 'https://cdn.modrinth.com/data/3FEg0A8D/versions/e7VE8bSy/cataclysm_spellbooks-1.2.9-1.20.1-all.jar', '57fbb161849fca19aa12632944b01ce12760c4c4'),
-    @('azurelib-neo-1.20.1-3.2.9.jar', 'https://cdn.modrinth.com/data/7zlUOZvb/versions/UseEzxfs/azurelib-neo-1.20.1-3.2.9.jar', 'e9de4acffce328fb3728464e1945611c8f512d05'),
     @('l2artifacts-2.4.28.jar', 'https://cdn.modrinth.com/data/8RtpLoXH/versions/J6xK6xft/l2artifacts-2.4.28.jar', '0b70963d598fb41a0a235c28bfec57e3cdfbdb55'),
     @('AttributeFix-Forge-1.20.1-21.0.5.jar', 'https://cdn.modrinth.com/data/lOOpEntO/versions/ihWybkI9/AttributeFix-Forge-1.20.1-21.0.5.jar', '76d6b2d0f2a3c9842587ad20666ba419cd8c1efa'),
     @('enhancedai-3.3.7.5.jar', 'https://cdn.modrinth.com/data/TDdoftI1/versions/FNZd08F4/enhancedai-3.3.7.5.jar', '8cb138410fd857d457a26eca5315546fd0417319'),
