@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.14.0'
+$PackVersion = '1.15.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -60,7 +60,6 @@ $Mods = @(
     @('fantasy-armor-1.3.1-1.20.1-forge.jar', 'https://cdn.modrinth.com/data/oVmpjYQ5/versions/e2QSYfvf/fantasy-armor-1.3.1-1.20.1-forge.jar', '270d1b008faf53015a4223923671d9e375e9ff81'),
     @('wider_ender_chests-forge-1.20.1-1.0.4.jar', 'https://cdn.modrinth.com/data/EDVt0J2I/versions/D91QPP3a/wider_ender_chests-forge-1.20.1-1.0.4.jar', '4bf753f31205a66a5502ba1875f7daf011e94e67'),
     @('Pehkui-3.8.2+1.20.1-forge.jar', 'https://cdn.modrinth.com/data/t5W7Jfwy/versions/SQpqSgAE/Pehkui-3.8.2%2B1.20.1-forge.jar', '4bc816efdd8e5e2a97423313674401351710e403'),
-    @('ToughAsNails-forge-1.20.1-9.2.0.171.jar', 'https://cdn.modrinth.com/data/ge1sOdFH/versions/kWVOI0iS/ToughAsNails-forge-1.20.1-9.2.0.171.jar', '2aa5d544d8bdfebd4f258899b008f8e7e252167a'),
     @('MinecraftCapes Forge 1.20.1-1.1.0.jar', 'https://cdn.modrinth.com/data/9gNVPfzw/versions/d5ILkObu/MinecraftCapes%20Forge%201.20.1-1.1.0.jar', '0bf2b5ce31b177b1472ed7f33b2e7452bcbf9955'),
     @('oculus-mc1.20.1-1.8.0.jar', 'https://cdn.modrinth.com/data/GchcoXML/versions/iQ1SwGc3/oculus-mc1.20.1-1.8.0.jar', '984f774e71790deaec674c7587bd24e0711871b2'),
     @('embeddium-0.3.31+mc1.20.1.jar', 'https://cdn.modrinth.com/data/sk9rgfiA/versions/UTbfe5d1/embeddium-0.3.31%2Bmc1.20.1.jar', 'bb2fa8f3e493af16af9160d049f96c614a1faf2f'),
@@ -77,7 +76,6 @@ $Mods = @(
     @('lionfishapi-3.0.jar', 'https://cdn.modrinth.com/data/FoVacERa/versions/CPftDBcY/lionfishapi-3.0.jar', '79d0404f87fa066480b18c844c1e0b1c5f5475f9'),
     @('l2library-2.5.7.jar', 'https://cdn.modrinth.com/data/4Vh3BQ3F/versions/sQK4WsgJ/l2library-2.5.7.jar', 'a5c488b8ded665d33add1e5bc58b823ef4b70883'),
     @('MoogsStructureLib-forge-1.20-3.4.2.jar', 'https://cdn.modrinth.com/data/1oUDhxuy/versions/zuKYMmUt/MoogsStructureLib-forge-1.20-3.4.2.jar', 'f91a62466de6e9b3a1166a1e88a837668cbb6eae'),
-    @('GlitchCore-forge-1.20.1-0.0.1.1.jar', 'https://cdn.modrinth.com/data/s3dmwKy5/versions/pYPZ5MNI/GlitchCore-forge-1.20.1-0.0.1.1.jar', 'bba0b08fe76b28b35243fee53f99d54a18153b53'),
     @('caelus-forge-3.2.0+1.20.1.jar', 'https://cdn.modrinth.com/data/40FYwb4z/versions/mRry0DgY/caelus-forge-3.2.0%2B1.20.1.jar', 'd14e8ee892d4d8764f523ad0e89bdcfc061fb007'),
     @('player-animation-lib-forge-1.0.2-rc1+1.20.jar', 'https://cdn.modrinth.com/data/gedNE4y2/versions/xe2EVE6q/player-animation-lib-forge-1.0.2-rc1%2B1.20.jar', '16808f94a41d45d8e986b4e4ea6b02ba57fa058a'),
     @('irons_lib-1.20.1-2.4.0.jar', 'https://cdn.modrinth.com/data/9nfaJPtX/versions/GxKHQobH/irons_lib-1.20.1-2.4.0.jar', '30f90c83ac5a2c0f1ccc9a11666a1d5469b524c0'),
@@ -299,21 +297,6 @@ if (Test-Path -LiteralPath $Dh) {
     [IO.File]::WriteAllText($Dh, "_version = 5`n`n[client.advanced.graphics.quality]`n`tlodChunkRenderDistanceRadius = $DhRenderDistance`n")
 }
 Say "    Distant Horizons: render distance $DhRenderDistance chunks"
-
-# Body temperature (hot/cold) is turned OFF since v1.13.3. Tough As Nails is kept for thirst.
-# TAN 9.2.0 has enable_temperature = true by default. GlitchCore keeps values already in the file and
-# fills in the rest, so a new file with only this key is fine. On a server, the server's file wins (synced on join).
-$TanDir = Join-Path (Join-Path $GameDir 'config') 'toughasnails'
-$Tan = Join-Path $TanDir 'temperature.toml'
-New-Item -ItemType Directory -Force -Path $TanDir | Out-Null
-if (Test-Path -LiteralPath $Tan) {
-    $t = [IO.File]::ReadAllText($Tan)
-    $t2 = [regex]::Replace($t, '(?m)^(\s*enable_temperature\s*=\s*)true', '${1}false')
-    if ($t2 -ne $t) { [IO.File]::WriteAllText($Tan, $t2) }
-} else {
-    [IO.File]::WriteAllText($Tan, "[toggles]`n`tenable_temperature = false`n")
-}
-Say '    Tough As Nails: body temperature off (thirst stays on)'
 
 # --- 4. Launcher profile ---
 Say '[4/4] Adding the launcher profile ...'

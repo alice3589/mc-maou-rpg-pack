@@ -1,7 +1,7 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
 ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 66個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 64個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +23,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 66個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 64個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に。テクスチャ2つを有効にし、Distant Horizons の描画距離を 1024 に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -44,7 +44,7 @@ Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better T
 Terralith（バイオーム95種以上）/ Tectonic 3（大陸と巨大な山脈）/ Incendium（ネザーの地形とバイオーム）
 
 **装備・便利・調整**
-Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition / Tough As Nails（喉の渇き。体温は v1.13.3 から切っています）
+Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition
 
 **料理・農業・別世界（友達の追加分, v1.7.0〜）**
 Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハーブティー・ワイン作り）/ Cooking for Blockheads（キッチンで料理をまとめて作る）/ Mystical Agriculture + Agradditions（鉱石や資源を畑で育てる）/ Sakura（桜と和風の食べ物）/ TofuCraft Reload（豆腐の世界）/ Urushi（和風ブロックと隠世ディメンション）/ Better Advancements（進捗画面が見やすくなる）
@@ -53,7 +53,7 @@ Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハー�
 MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）/ ItemPhysic Lite（落ちたアイテムが寝転がる・水に浮く）/ Sound Physics Remastered（洞窟で響く・壁の向こうの音がこもる）/ First-person Model（一人称で自分の体が見える）/ Not Enough Animations（一人称でも手の動きが細かくなる）/ Camera Overhaul（歩く・曲がるときにカメラが揺れる）
 
 **前提mod**
-Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / Moog's Structure Lib / Lithostitched / AttributeFix / GlitchCore / CreativeCore / Cloth Config / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
+Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / Moog's Structure Lib / Lithostitched / AttributeFix / CreativeCore / Cloth Config / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
 
 ## 地形生成について（v1.11.0〜）
 
@@ -89,12 +89,12 @@ Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2
 - v1.12.0〜v1.13.3 に入れていた **YDM's Weapon Master**（ホットバーの武器を背中・腰に表示する mod）を外しました
 - bat をもう一度実行すると `mods` から自動で消えます。サーバーの `mods` からも `weaponmaster_ydm-forge-1.20.1-4.2.3.jar` を消してください
 
-## 暑さ・寒さについて（v1.13.3〜）
+## 暑さ・寒さ・喉の渇きについて（v1.15.0〜）
 
-- **暑さ・寒さ（体温）は切っています。** 喉の渇きは **Tough As Nails** がそのまま担当します
-- bat を実行すると `config\toughasnails\temperature.toml` の `enable_temperature` を `false` にします
-- **サーバーで遊ぶときは、サーバーの設定が使われます**（入ったときにサーバーから送られてきます）。サーバーでも同じ設定にしてください（[server-mods.md](server-mods.md) の「サーバーの設定」）
-- 体温を戻したいときは、`enable_temperature` を `true` にします
+- **Tough As Nails を外したので、暑さ・寒さ（体温）も喉の渇きもありません**（前提の GlitchCore も一緒に外しました）
+- v1.13.3〜v1.14.0 は、設定で体温だけ切って喉の渇きは残していました。v1.15.0 からは mod ごと外しています
+- bat をもう一度実行すると `mods` から自動で消えます。**サーバーの `mods` からも `ToughAsNails-forge-1.20.1-9.2.0.171.jar` と `GlitchCore-forge-1.20.1-0.0.1.1.jar` を消してください**
+- 体温・渇きのゲージや、Tough As Nails の水筒・アイテムはなくなります
 - Heat and Climate は v1.10.0 で外しました（v1.6.0〜v1.9.0 に入っていました）。bat をもう一度実行すると `mods` から自動で消えます
 
 ## サーバーを立てるとき

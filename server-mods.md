@@ -1,7 +1,7 @@
-# サーバーに入れる mod 一覧（v1.14.0）
+# サーバーに入れる mod 一覧（v1.15.0）
 
-Forge **1.20.1-47.4.x** のサーバーの `mods` フォルダに、下の **55個** を入れます。
-配布用の bat が入れる 66個から、クライアント（各自の PC）専用の 11個を除いたものです。
+Forge **1.20.1-47.4.x** のサーバーの `mods` フォルダに、下の **53個** を入れます。
+配布用の bat が入れる 64個から、クライアント（各自の PC）専用の 11個を除いたものです。
 
 > この一覧は `make-server-mods.py` が `install-maou-rpg.bat` の mod リストから作っています。
 > `python make-server-mods.py --out フォルダ` で、この jar 一式（とその zip）も作れます。
@@ -37,14 +37,12 @@ Incendium_1.20.x_v5.3.5.jar
 fantasy-armor-1.3.1-1.20.1-forge.jar
 wider_ender_chests-forge-1.20.1-1.0.4.jar
 Pehkui-3.8.2+1.20.1-forge.jar
-ToughAsNails-forge-1.20.1-9.2.0.171.jar
 DistantHorizons-3.3.3-1.20.1-fabric-forge.jar
 curios-forge-5.14.1+1.20.1.jar
 geckolib-forge-1.20.1-4.8.5.jar
 lionfishapi-3.0.jar
 l2library-2.5.7.jar
 MoogsStructureLib-forge-1.20-3.4.2.jar
-GlitchCore-forge-1.20.1-0.0.1.1.jar
 caelus-forge-3.2.0+1.20.1.jar
 player-animation-lib-forge-1.0.2-rc1+1.20.jar
 irons_lib-1.20.1-2.4.0.jar
@@ -96,35 +94,33 @@ urushi-1.20.1-6.7.0.jar
 | 24 | [fantasy-armor-1.3.1-1.20.1-forge.jar](https://cdn.modrinth.com/data/oVmpjYQ5/versions/e2QSYfvf/fantasy-armor-1.3.1-1.20.1-forge.jar) | `270d1b008faf53015a4223923671d9e375e9ff81` |
 | 25 | [wider_ender_chests-forge-1.20.1-1.0.4.jar](https://cdn.modrinth.com/data/EDVt0J2I/versions/D91QPP3a/wider_ender_chests-forge-1.20.1-1.0.4.jar) | `4bf753f31205a66a5502ba1875f7daf011e94e67` |
 | 26 | [Pehkui-3.8.2+1.20.1-forge.jar](https://cdn.modrinth.com/data/t5W7Jfwy/versions/SQpqSgAE/Pehkui-3.8.2%2B1.20.1-forge.jar) | `4bc816efdd8e5e2a97423313674401351710e403` |
-| 27 | [ToughAsNails-forge-1.20.1-9.2.0.171.jar](https://cdn.modrinth.com/data/ge1sOdFH/versions/kWVOI0iS/ToughAsNails-forge-1.20.1-9.2.0.171.jar) | `2aa5d544d8bdfebd4f258899b008f8e7e252167a` |
-| 28 | [DistantHorizons-3.3.3-1.20.1-fabric-forge.jar](https://cdn.modrinth.com/data/uCdwusMi/versions/6UnEfsRQ/DistantHorizons-3.3.3-1.20.1-fabric-forge.jar) | `5447c4716571bfdba817c85278a9ce0d411573ec` |
-| 29 | [curios-forge-5.14.1+1.20.1.jar](https://cdn.modrinth.com/data/vvuO3ImH/versions/IPQlZkz1/curios-forge-5.14.1%2B1.20.1.jar) | `452175b95ad3db6ff58bb8968f6bf7a9d1e0f480` |
-| 30 | [geckolib-forge-1.20.1-4.8.5.jar](https://cdn.modrinth.com/data/8BmcQJ2H/versions/dBtjgm8n/geckolib-forge-1.20.1-4.8.5.jar) | `a117dc87ce46a5ea0da0f549199d2e80e81a26fe` |
-| 31 | [lionfishapi-3.0.jar](https://cdn.modrinth.com/data/FoVacERa/versions/CPftDBcY/lionfishapi-3.0.jar) | `79d0404f87fa066480b18c844c1e0b1c5f5475f9` |
-| 32 | [l2library-2.5.7.jar](https://cdn.modrinth.com/data/4Vh3BQ3F/versions/sQK4WsgJ/l2library-2.5.7.jar) | `a5c488b8ded665d33add1e5bc58b823ef4b70883` |
-| 33 | [MoogsStructureLib-forge-1.20-3.4.2.jar](https://cdn.modrinth.com/data/1oUDhxuy/versions/zuKYMmUt/MoogsStructureLib-forge-1.20-3.4.2.jar) | `f91a62466de6e9b3a1166a1e88a837668cbb6eae` |
-| 34 | [GlitchCore-forge-1.20.1-0.0.1.1.jar](https://cdn.modrinth.com/data/s3dmwKy5/versions/pYPZ5MNI/GlitchCore-forge-1.20.1-0.0.1.1.jar) | `bba0b08fe76b28b35243fee53f99d54a18153b53` |
-| 35 | [caelus-forge-3.2.0+1.20.1.jar](https://cdn.modrinth.com/data/40FYwb4z/versions/mRry0DgY/caelus-forge-3.2.0%2B1.20.1.jar) | `d14e8ee892d4d8764f523ad0e89bdcfc061fb007` |
-| 36 | [player-animation-lib-forge-1.0.2-rc1+1.20.jar](https://cdn.modrinth.com/data/gedNE4y2/versions/xe2EVE6q/player-animation-lib-forge-1.0.2-rc1%2B1.20.jar) | `16808f94a41d45d8e986b4e4ea6b02ba57fa058a` |
-| 37 | [irons_lib-1.20.1-2.4.0.jar](https://cdn.modrinth.com/data/9nfaJPtX/versions/GxKHQobH/irons_lib-1.20.1-2.4.0.jar) | `30f90c83ac5a2c0f1ccc9a11666a1d5469b524c0` |
-| 38 | [solcarrot-1.20.1-1.15.1.jar](https://mediafilez.forgecdn.net/files/4888/575/solcarrot-1.20.1-1.15.1.jar) | `f7fa1fd0c633b10f98d7f0f97766b95aac1a2dc0` |
-| 39 | [PeyroScythe-Forge-1.20.1-1.3.3.jar](https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar) | `70cbd842c70c2f3967177ce60feabc8a2b60012f` |
-| 40 | [architectury-9.1.13-forge.jar](https://cdn.modrinth.com/data/lhGA9TYQ/versions/tBWqtdBO/architectury-9.1.13-forge.jar) | `ef7558f149fc5db623f15aa7bf942f7ead5b8f0d` |
-| 41 | [letsdo-API-forge-1.2.15-forge.jar](https://cdn.modrinth.com/data/4XJZeZbM/versions/uEaTMht9/letsdo-API-forge-1.2.15-forge.jar) | `a261043a45097d861a13a63ebdbb0ca350e06a63` |
-| 42 | [mysterious_mountain_lib-1.6.34-1.20.1.jar](https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar) | `4fb6e35edf9384fde736cd9ee972468d65f61dce` |
-| 43 | [Cucumber-1.20.1-7.0.16.jar](https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar) | `88a9ec30e4acb5c80a3ae060ad70b79e945293c6` |
-| 44 | [balm-forge-1.20.1-7.3.44.jar](https://mediafilez.forgecdn.net/files/8969/708/balm-forge-1.20.1-7.3.44.jar) | `b3f8a6a5823d3b4f2dce19c8aea9373e24bcb443` |
-| 45 | [bagus_lib-1.20.1-5.6.1.jar](https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar) | `d62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba` |
-| 46 | [cookingforblockheads-forge-1.20.1-16.0.16.jar](https://mediafilez.forgecdn.net/files/9647/269/cookingforblockheads-forge-1.20.1-16.0.16.jar) | `bec451505c1173cccb6dcd648d8ccf53d72a95cf` |
-| 47 | [letsdo-bakery-forge-1.1.15.jar](https://cdn.modrinth.com/data/WFwYiVoG/versions/Jo8EwiDR/letsdo-bakery-forge-1.1.15.jar) | `c5cd44088089fca03f3291b851dcb0d00018fecb` |
-| 48 | [letsdo-brewery-forge-1.1.9.jar](https://cdn.modrinth.com/data/cV5LQXKx/versions/vqYszE4F/letsdo-brewery-forge-1.1.9.jar) | `50e5181e734dcfc599aa0eaac376ff4e312f63c2` |
-| 49 | [letsdo-herbalbrews-forge-1.0.12.jar](https://cdn.modrinth.com/data/Eh11TaTm/versions/qKfEj2BA/letsdo-herbalbrews-forge-1.0.12.jar) | `3de7feb383868a0db45351580d6ef5b05b776f16` |
-| 50 | [letsdo-vinery-forge-1.4.41.jar](https://cdn.modrinth.com/data/1DWmBJVA/versions/2I4cH49O/letsdo-vinery-forge-1.4.41.jar) | `68ed3fa9524bef601064f49f60a30423db2f8fdc` |
-| 51 | [MysticalAgradditions-1.20.1-7.0.12.jar](https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar) | `b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9` |
-| 52 | [MysticalAgriculture-1.20.1-7.0.24.jar](https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar) | `e8839d207456a47ed6a576469901a087319b505f` |
-| 53 | [Sakura-1.1.16-1.20.1.jar](https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar) | `03ce0fdaf0827d39b6223556aac25b39f5309323` |
-| 54 | [TofuCraftReload-1.20.1-5.18.4.0.jar](https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar) | `a3c1ef9f3d1f808f55ee34447747441e9f9f1195` |
-| 55 | [urushi-1.20.1-6.7.0.jar](https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar) | `5f9be08bf26b7750029aed63d7d4c20688e7065f` |
+| 27 | [DistantHorizons-3.3.3-1.20.1-fabric-forge.jar](https://cdn.modrinth.com/data/uCdwusMi/versions/6UnEfsRQ/DistantHorizons-3.3.3-1.20.1-fabric-forge.jar) | `5447c4716571bfdba817c85278a9ce0d411573ec` |
+| 28 | [curios-forge-5.14.1+1.20.1.jar](https://cdn.modrinth.com/data/vvuO3ImH/versions/IPQlZkz1/curios-forge-5.14.1%2B1.20.1.jar) | `452175b95ad3db6ff58bb8968f6bf7a9d1e0f480` |
+| 29 | [geckolib-forge-1.20.1-4.8.5.jar](https://cdn.modrinth.com/data/8BmcQJ2H/versions/dBtjgm8n/geckolib-forge-1.20.1-4.8.5.jar) | `a117dc87ce46a5ea0da0f549199d2e80e81a26fe` |
+| 30 | [lionfishapi-3.0.jar](https://cdn.modrinth.com/data/FoVacERa/versions/CPftDBcY/lionfishapi-3.0.jar) | `79d0404f87fa066480b18c844c1e0b1c5f5475f9` |
+| 31 | [l2library-2.5.7.jar](https://cdn.modrinth.com/data/4Vh3BQ3F/versions/sQK4WsgJ/l2library-2.5.7.jar) | `a5c488b8ded665d33add1e5bc58b823ef4b70883` |
+| 32 | [MoogsStructureLib-forge-1.20-3.4.2.jar](https://cdn.modrinth.com/data/1oUDhxuy/versions/zuKYMmUt/MoogsStructureLib-forge-1.20-3.4.2.jar) | `f91a62466de6e9b3a1166a1e88a837668cbb6eae` |
+| 33 | [caelus-forge-3.2.0+1.20.1.jar](https://cdn.modrinth.com/data/40FYwb4z/versions/mRry0DgY/caelus-forge-3.2.0%2B1.20.1.jar) | `d14e8ee892d4d8764f523ad0e89bdcfc061fb007` |
+| 34 | [player-animation-lib-forge-1.0.2-rc1+1.20.jar](https://cdn.modrinth.com/data/gedNE4y2/versions/xe2EVE6q/player-animation-lib-forge-1.0.2-rc1%2B1.20.jar) | `16808f94a41d45d8e986b4e4ea6b02ba57fa058a` |
+| 35 | [irons_lib-1.20.1-2.4.0.jar](https://cdn.modrinth.com/data/9nfaJPtX/versions/GxKHQobH/irons_lib-1.20.1-2.4.0.jar) | `30f90c83ac5a2c0f1ccc9a11666a1d5469b524c0` |
+| 36 | [solcarrot-1.20.1-1.15.1.jar](https://mediafilez.forgecdn.net/files/4888/575/solcarrot-1.20.1-1.15.1.jar) | `f7fa1fd0c633b10f98d7f0f97766b95aac1a2dc0` |
+| 37 | [PeyroScythe-Forge-1.20.1-1.3.3.jar](https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar) | `70cbd842c70c2f3967177ce60feabc8a2b60012f` |
+| 38 | [architectury-9.1.13-forge.jar](https://cdn.modrinth.com/data/lhGA9TYQ/versions/tBWqtdBO/architectury-9.1.13-forge.jar) | `ef7558f149fc5db623f15aa7bf942f7ead5b8f0d` |
+| 39 | [letsdo-API-forge-1.2.15-forge.jar](https://cdn.modrinth.com/data/4XJZeZbM/versions/uEaTMht9/letsdo-API-forge-1.2.15-forge.jar) | `a261043a45097d861a13a63ebdbb0ca350e06a63` |
+| 40 | [mysterious_mountain_lib-1.6.34-1.20.1.jar](https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar) | `4fb6e35edf9384fde736cd9ee972468d65f61dce` |
+| 41 | [Cucumber-1.20.1-7.0.16.jar](https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar) | `88a9ec30e4acb5c80a3ae060ad70b79e945293c6` |
+| 42 | [balm-forge-1.20.1-7.3.44.jar](https://mediafilez.forgecdn.net/files/8969/708/balm-forge-1.20.1-7.3.44.jar) | `b3f8a6a5823d3b4f2dce19c8aea9373e24bcb443` |
+| 43 | [bagus_lib-1.20.1-5.6.1.jar](https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar) | `d62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba` |
+| 44 | [cookingforblockheads-forge-1.20.1-16.0.16.jar](https://mediafilez.forgecdn.net/files/9647/269/cookingforblockheads-forge-1.20.1-16.0.16.jar) | `bec451505c1173cccb6dcd648d8ccf53d72a95cf` |
+| 45 | [letsdo-bakery-forge-1.1.15.jar](https://cdn.modrinth.com/data/WFwYiVoG/versions/Jo8EwiDR/letsdo-bakery-forge-1.1.15.jar) | `c5cd44088089fca03f3291b851dcb0d00018fecb` |
+| 46 | [letsdo-brewery-forge-1.1.9.jar](https://cdn.modrinth.com/data/cV5LQXKx/versions/vqYszE4F/letsdo-brewery-forge-1.1.9.jar) | `50e5181e734dcfc599aa0eaac376ff4e312f63c2` |
+| 47 | [letsdo-herbalbrews-forge-1.0.12.jar](https://cdn.modrinth.com/data/Eh11TaTm/versions/qKfEj2BA/letsdo-herbalbrews-forge-1.0.12.jar) | `3de7feb383868a0db45351580d6ef5b05b776f16` |
+| 48 | [letsdo-vinery-forge-1.4.41.jar](https://cdn.modrinth.com/data/1DWmBJVA/versions/2I4cH49O/letsdo-vinery-forge-1.4.41.jar) | `68ed3fa9524bef601064f49f60a30423db2f8fdc` |
+| 49 | [MysticalAgradditions-1.20.1-7.0.12.jar](https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar) | `b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9` |
+| 50 | [MysticalAgriculture-1.20.1-7.0.24.jar](https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar) | `e8839d207456a47ed6a576469901a087319b505f` |
+| 51 | [Sakura-1.1.16-1.20.1.jar](https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar) | `03ce0fdaf0827d39b6223556aac25b39f5309323` |
+| 52 | [TofuCraftReload-1.20.1-5.18.4.0.jar](https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar) | `a3c1ef9f3d1f808f55ee34447747441e9f9f1195` |
+| 53 | [urushi-1.20.1-6.7.0.jar](https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar) | `5f9be08bf26b7750029aed63d7d4c20688e7065f` |
 
 ## 入れない mod（クライアント専用）
 
@@ -159,9 +155,30 @@ Distant Horizons はサーバーにも入れます（サーバー側で遠くの
 | v1.9.0 | `StreamsReflowing-1.20.1-forge-2.17.5.jar` |
 | v1.9.0 | `cristellib-1.1.6-forge.jar` |
 | v1.10.0 | `HeatAndClimate-1.20.1-v5.0.6.jar` |
+| v1.13.2 | `cataclysm_spellbooks-1.2.9-1.20.1-all.jar` |
+| v1.13.2 | `azurelib-neo-1.20.1-3.2.9.jar` |
+| v1.13.4 | `weaponmaster_ydm-forge-1.20.1-4.2.3.jar` |
+| v1.14.0 | `integrated_stronghold-1.1.1+1.20.1-forge.jar` |
+| v1.14.0 | `integrated_api-forge-1.20.1-1.9.2.jar` |
+| v1.14.0 | `create-1.20.1-6.0.8.jar` |
+| v1.14.0 | `supplementaries-1.20-3.1.45-forge.jar` |
+| v1.14.0 | `Quark-4.0-462.jar` |
+| v1.14.0 | `Zeta-1.0-31.jar` |
+| v1.14.0 | `moonlight-1.20-2.16.39-forge.jar` |
+| v1.14.0 | `enhancedai-3.3.7.5.jar` |
+| v1.14.0 | `insanelib-1.23.4.6.jar` |
+| v1.14.0 | `eh2.0-forge1.20.1.jar` |
+| v1.14.0 | `l2hostility-2.5.19.jar` |
+| v1.14.0 | `l2complements-2.6.1.jar` |
+| v1.14.0 | `Patchouli-1.20.1-85-FORGE.jar` |
+| v1.15.0 | `ToughAsNails-forge-1.20.1-9.2.0.171.jar` |
+| v1.15.0 | `GlitchCore-forge-1.20.1-0.0.1.1.jar` |
 
 - v1.9.0: 地形生成の mod を外したため（Tectonic 2.4.1 は v1.11.0 で 3.0.17 に入れ替え）
-- v1.10.0: Heat and Climate を外したため（体温は Tough As Nails だけ）
+- v1.10.0: Heat and Climate を外したため
+- v1.13.2: Cataclysm: Spellbooks が Cataclysm 3.31 で起動時に落ちるため（AzureLib はその前提）
+- v1.14.0: サーバーを軽くするため（Integrated Stronghold とその前提・Enhanced AI・Enhanced Hordes・L2 Hostility とその前提）
+- v1.15.0: 暑さ・寒さ（体温）をなくすため Tough As Nails ごと外した（GlitchCore はその前提）
 
 ## 地形生成（v1.11.0〜）
 
@@ -170,15 +187,7 @@ Terralith・Tectonic 3（前提 Lithostitched）・Incendium（ネザー）を�
 バイオームが見つからない警告が出たり、地形の境目が切れたりします。
 Nullscape は Stellarity と同じエンドのファイルを書き換えるので入れていません。
 
-## サーバーの設定（config）
+## 暑さ・寒さ・喉の渇き（v1.15.0〜）
 
-v1.13.3 から、暑さ・寒さ（体温）は切っています。Tough As Nails は喉の渇きのために残しています。
-**サーバーに入ると、サーバー側の Tough As Nails の設定がプレイヤーに送られて上書きされます。**
-そのため、サーバーでも次のように書き換えてください。
-
-| ファイル | 項目 | 値 |
-| --- | --- | --- |
-| `config/toughasnails/temperature.toml` | `enable_temperature` | `false` |
-
-ファイルは `[toggles]` の下にある `enable_temperature = true` を `false` に変えます。
-ファイルがなければ、サーバーを一度起動すると作られます。書き換えたらサーバーを再起動します。
+v1.15.0 で Tough As Nails を外したので、暑さ・寒さ（体温）も喉の渇きもありません。
+`config/toughasnails` フォルダは残っていても使われません（消してもかまいません）。

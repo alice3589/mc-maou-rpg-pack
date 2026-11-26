@@ -47,6 +47,24 @@ REMOVED = [
     ('v1.9.0', 'StreamsReflowing-1.20.1-forge-2.17.5.jar'),
     ('v1.9.0', 'cristellib-1.1.6-forge.jar'),
     ('v1.10.0', 'HeatAndClimate-1.20.1-v5.0.6.jar'),
+    ('v1.13.2', 'cataclysm_spellbooks-1.2.9-1.20.1-all.jar'),
+    ('v1.13.2', 'azurelib-neo-1.20.1-3.2.9.jar'),
+    ('v1.13.4', 'weaponmaster_ydm-forge-1.20.1-4.2.3.jar'),
+    ('v1.14.0', 'integrated_stronghold-1.1.1+1.20.1-forge.jar'),
+    ('v1.14.0', 'integrated_api-forge-1.20.1-1.9.2.jar'),
+    ('v1.14.0', 'create-1.20.1-6.0.8.jar'),
+    ('v1.14.0', 'supplementaries-1.20-3.1.45-forge.jar'),
+    ('v1.14.0', 'Quark-4.0-462.jar'),
+    ('v1.14.0', 'Zeta-1.0-31.jar'),
+    ('v1.14.0', 'moonlight-1.20-2.16.39-forge.jar'),
+    ('v1.14.0', 'enhancedai-3.3.7.5.jar'),
+    ('v1.14.0', 'insanelib-1.23.4.6.jar'),
+    ('v1.14.0', 'eh2.0-forge1.20.1.jar'),
+    ('v1.14.0', 'l2hostility-2.5.19.jar'),
+    ('v1.14.0', 'l2complements-2.6.1.jar'),
+    ('v1.14.0', 'Patchouli-1.20.1-85-FORGE.jar'),
+    ('v1.15.0', 'ToughAsNails-forge-1.20.1-9.2.0.171.jar'),
+    ('v1.15.0', 'GlitchCore-forge-1.20.1-0.0.1.1.jar'),
 ]
 
 
@@ -105,22 +123,18 @@ def write_md(ver, mods):
         w(f'| {v} | `{r}` |')
     w('')
     w('- v1.9.0: 地形生成の mod を外したため（Tectonic 2.4.1 は v1.11.0 で 3.0.17 に入れ替え）')
-    w('- v1.10.0: Heat and Climate を外したため（体温は Tough As Nails だけ）\n')
+    w('- v1.10.0: Heat and Climate を外したため')
+    w('- v1.13.2: Cataclysm: Spellbooks が Cataclysm 3.31 で起動時に落ちるため（AzureLib はその前提）')
+    w('- v1.14.0: サーバーを軽くするため（Integrated Stronghold とその前提・Enhanced AI・Enhanced Hordes・L2 Hostility とその前提）')
+    w('- v1.15.0: 暑さ・寒さ（体温）をなくすため Tough As Nails ごと外した（GlitchCore はその前提）\n')
     w('## 地形生成（v1.11.0〜）\n')
     w('Terralith・Tectonic 3（前提 Lithostitched）・Incendium（ネザー）を入れています。')
     w('**地形の mod を入れ替えたら、ワールドを作り直してください。** 前のワールドをそのまま使うと、')
     w('バイオームが見つからない警告が出たり、地形の境目が切れたりします。')
     w('Nullscape は Stellarity と同じエンドのファイルを書き換えるので入れていません。\n')
-    w('## サーバーの設定（config）\n')
-    w('v1.13.3 から、暑さ・寒さ（体温）は切っています。Tough As Nails は喉の渇きのために残しています。')
-    w('**サーバーに入ると、サーバー側の Tough As Nails の設定がプレイヤーに送られて上書きされます。**')
-    w('そのため、サーバーでも次のように書き換えてください。\n')
-    w('| ファイル | 項目 | 値 |')
-    w('| --- | --- | --- |')
-    w('| `config/toughasnails/temperature.toml` | `enable_temperature` | `false` |')
-    w('')
-    w('ファイルは `[toggles]` の下にある `enable_temperature = true` を `false` に変えます。')
-    w('ファイルがなければ、サーバーを一度起動すると作られます。書き換えたらサーバーを再起動します。\n')
+    w('## 暑さ・寒さ・喉の渇き（v1.15.0〜）\n')
+    w('v1.15.0 で Tough As Nails を外したので、暑さ・寒さ（体温）も喉の渇きもありません。')
+    w('`config/toughasnails` フォルダは残っていても使われません（消してもかまいません）。\n')
     open(MD, 'w', encoding='utf-8', newline='\n').write('\n'.join(o))
     return srv
 
