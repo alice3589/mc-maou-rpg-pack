@@ -1,7 +1,7 @@
-# サーバーに入れる mod 一覧（v2.2.0）
+# サーバーに入れる mod 一覧（v2.3.0）
 
-Forge **1.20.1-47.4.x** のサーバーの `mods` フォルダに、下の **18個** を入れます。
-配布用の bat が入れる 28個から、クライアント（各自の PC）専用の 10個を除いたものです。
+Forge **1.20.1-47.4.x** のサーバーの `mods` フォルダに、下の **20個** を入れます。
+配布用の bat が入れる 29個から、クライアント（各自の PC）専用の 9個を除いたものです。
 
 > この一覧は `make-server-mods.py` が `install-maou-rpg.bat` の mod リストから作っています。
 > `python make-server-mods.py --out フォルダ` で、この jar 一式（とその zip）も作れます。
@@ -16,6 +16,7 @@ tectonic-3.0.17-forge-1.20.1.jar
 lithostitched-forge-1.20.1-1.4.12.jar
 Incendium_1.20.x_v5.3.5.jar
 DistantHorizons-3.3.3-1.20.1-fabric-forge.jar
+cloth-config-11.1.136-forge.jar
 mysterious_mountain_lib-1.6.34-1.20.1.jar
 Cucumber-1.20.1-7.0.16.jar
 bagus_lib-1.20.1-5.6.1.jar
@@ -27,7 +28,8 @@ HeatAndClimate-1.20.1-v5.0.6.jar
 architectury-9.2.14-forge.jar
 ftb-library-forge-2001.2.13.jar
 ftb-ultimine-forge-2001.1.8.jar
-touhoulittlemaid-1.5.3-forge+mc1.20.1.jar
+LMML-1.20.1-8.3.1-Forge.jar
+LMRB-1.20.1-8.11.1-Forge.jar
 urushi-1.20.1-6.7.0.jar
 ```
 
@@ -38,19 +40,21 @@ urushi-1.20.1-6.7.0.jar
 | 3 | [lithostitched-forge-1.20.1-1.4.12.jar](https://cdn.modrinth.com/data/XaDC71GB/versions/Uqt1Zm1l/lithostitched-forge-1.20.1-1.4.12.jar) | `c8a23f9c1975f11a8d10110aa862251a6043db78` |
 | 4 | [Incendium_1.20.x_v5.3.5.jar](https://cdn.modrinth.com/data/ZVzW5oNS/versions/uUqarp2H/Incendium_1.20.x_v5.3.5.jar) | `484556937b1b2dde2682144e7953e79bff717104` |
 | 5 | [DistantHorizons-3.3.3-1.20.1-fabric-forge.jar](https://cdn.modrinth.com/data/uCdwusMi/versions/6UnEfsRQ/DistantHorizons-3.3.3-1.20.1-fabric-forge.jar) | `5447c4716571bfdba817c85278a9ce0d411573ec` |
-| 6 | [mysterious_mountain_lib-1.6.34-1.20.1.jar](https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar) | `4fb6e35edf9384fde736cd9ee972468d65f61dce` |
-| 7 | [Cucumber-1.20.1-7.0.16.jar](https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar) | `88a9ec30e4acb5c80a3ae060ad70b79e945293c6` |
-| 8 | [bagus_lib-1.20.1-5.6.1.jar](https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar) | `d62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba` |
-| 9 | [MysticalAgradditions-1.20.1-7.0.12.jar](https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar) | `b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9` |
-| 10 | [MysticalAgriculture-1.20.1-7.0.24.jar](https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar) | `e8839d207456a47ed6a576469901a087319b505f` |
-| 11 | [Sakura-1.1.16-1.20.1.jar](https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar) | `03ce0fdaf0827d39b6223556aac25b39f5309323` |
-| 12 | [TofuCraftReload-1.20.1-5.18.4.0.jar](https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar) | `a3c1ef9f3d1f808f55ee34447747441e9f9f1195` |
-| 13 | [HeatAndClimate-1.20.1-v5.0.6.jar](https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar) | `f8e5dab4794c54fb3cff27ac6e814778bb416d38` |
-| 14 | [architectury-9.2.14-forge.jar](https://cdn.modrinth.com/data/lhGA9TYQ/versions/1MKTLiiG/architectury-9.2.14-forge.jar) | `a52918a500ff421180a1cbd1a0cabee712134ec4` |
-| 15 | [ftb-library-forge-2001.2.13.jar](https://mediafilez.forgecdn.net/files/8226/927/ftb-library-forge-2001.2.13.jar) | `a5427d5ff07eb044144ed0b54308370d88bce17e` |
-| 16 | [ftb-ultimine-forge-2001.1.8.jar](https://mediafilez.forgecdn.net/files/7880/472/ftb-ultimine-forge-2001.1.8.jar) | `c2a1eb72c36ad067faafbff4e1618c4db906de74` |
-| 17 | [touhoulittlemaid-1.5.3-forge+mc1.20.1.jar](https://cdn.modrinth.com/data/R0bDWFAW/versions/g1SKoGQJ/touhoulittlemaid-1.5.3-forge%2Bmc1.20.1.jar) | `9097a2a57e7ed639bca072dd62e4a9257e86db89` |
-| 18 | [urushi-1.20.1-6.7.0.jar](https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar) | `5f9be08bf26b7750029aed63d7d4c20688e7065f` |
+| 6 | [cloth-config-11.1.136-forge.jar](https://cdn.modrinth.com/data/9s6osm5g/versions/t8TXrZvZ/cloth-config-11.1.136-forge.jar) | `c65d07748acc57ceb45d53b3964368b84f34d54f` |
+| 7 | [mysterious_mountain_lib-1.6.34-1.20.1.jar](https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar) | `4fb6e35edf9384fde736cd9ee972468d65f61dce` |
+| 8 | [Cucumber-1.20.1-7.0.16.jar](https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar) | `88a9ec30e4acb5c80a3ae060ad70b79e945293c6` |
+| 9 | [bagus_lib-1.20.1-5.6.1.jar](https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar) | `d62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba` |
+| 10 | [MysticalAgradditions-1.20.1-7.0.12.jar](https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar) | `b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9` |
+| 11 | [MysticalAgriculture-1.20.1-7.0.24.jar](https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar) | `e8839d207456a47ed6a576469901a087319b505f` |
+| 12 | [Sakura-1.1.16-1.20.1.jar](https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar) | `03ce0fdaf0827d39b6223556aac25b39f5309323` |
+| 13 | [TofuCraftReload-1.20.1-5.18.4.0.jar](https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar) | `a3c1ef9f3d1f808f55ee34447747441e9f9f1195` |
+| 14 | [HeatAndClimate-1.20.1-v5.0.6.jar](https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar) | `f8e5dab4794c54fb3cff27ac6e814778bb416d38` |
+| 15 | [architectury-9.2.14-forge.jar](https://cdn.modrinth.com/data/lhGA9TYQ/versions/1MKTLiiG/architectury-9.2.14-forge.jar) | `a52918a500ff421180a1cbd1a0cabee712134ec4` |
+| 16 | [ftb-library-forge-2001.2.13.jar](https://mediafilez.forgecdn.net/files/8226/927/ftb-library-forge-2001.2.13.jar) | `a5427d5ff07eb044144ed0b54308370d88bce17e` |
+| 17 | [ftb-ultimine-forge-2001.1.8.jar](https://mediafilez.forgecdn.net/files/7880/472/ftb-ultimine-forge-2001.1.8.jar) | `c2a1eb72c36ad067faafbff4e1618c4db906de74` |
+| 18 | [LMML-1.20.1-8.3.1-Forge.jar](https://github.com/SistrScarlet/LittleMaidModelLoader-Architectury/releases/download/v8.3.1/LMML-1.20.1-8.3.1-Forge.jar) | `a3c3cf051dc6617338682e681ef2f90205c61c9f` |
+| 19 | [LMRB-1.20.1-8.11.1-Forge.jar](https://github.com/SistrScarlet/LittleMaidReBirth-Architectury/releases/download/v8.11.1/LMRB-1.20.1-8.11.1-Forge.jar) | `7b6da1ab000f61d77e12d8b08c96ab29b0dbd727` |
+| 20 | [urushi-1.20.1-6.7.0.jar](https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar) | `5f9be08bf26b7750029aed63d7d4c20688e7065f` |
 
 ## 入れない mod（クライアント専用）
 
@@ -67,7 +71,6 @@ urushi-1.20.1-6.7.0.jar
 | `firstperson-forge-2.7.3-mc1.20.1.jar` | 一人称で体が見える（クライアント専用） |
 | `notenoughanimations-forge-1.12.7-mc1.20.1.jar` | 手の動き（クライアント専用） |
 | `CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar` | カメラの揺れ |
-| `cloth-config-11.1.136-forge.jar` | Camera Overhaul の設定画面用。ほかに使う mod がない |
 
 Distant Horizons はサーバーにも入れます（サーバー側で遠くの地形を作って配れるようになります）。
 
@@ -104,6 +107,7 @@ Distant Horizons はサーバーにも入れます（サーバー側で遠くの
 | v1.14.0 | `Patchouli-1.20.1-85-FORGE.jar` |
 | v1.15.0 | `ToughAsNails-forge-1.20.1-9.2.0.171.jar` |
 | v1.15.0 | `GlitchCore-forge-1.20.1-0.0.1.1.jar` |
+| v2.3.0 | `touhoulittlemaid-1.5.3-forge+mc1.20.1.jar` |
 
 - v1.9.0: 地形生成の mod を外したため（Tectonic 2.4.1 は v1.11.0 で 3.0.17 に入れ替え）
 - v1.10.0: Heat and Climate を外したため

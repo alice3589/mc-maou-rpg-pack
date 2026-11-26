@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '2.2.0'
+$PackVersion = '2.3.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -60,7 +60,8 @@ $Mods = @(
     @('architectury-9.2.14-forge.jar', 'https://cdn.modrinth.com/data/lhGA9TYQ/versions/1MKTLiiG/architectury-9.2.14-forge.jar', 'a52918a500ff421180a1cbd1a0cabee712134ec4'),
     @('ftb-library-forge-2001.2.13.jar', 'https://mediafilez.forgecdn.net/files/8226/927/ftb-library-forge-2001.2.13.jar', 'a5427d5ff07eb044144ed0b54308370d88bce17e'),
     @('ftb-ultimine-forge-2001.1.8.jar', 'https://mediafilez.forgecdn.net/files/7880/472/ftb-ultimine-forge-2001.1.8.jar', 'c2a1eb72c36ad067faafbff4e1618c4db906de74'),
-    @('touhoulittlemaid-1.5.3-forge+mc1.20.1.jar', 'https://cdn.modrinth.com/data/R0bDWFAW/versions/g1SKoGQJ/touhoulittlemaid-1.5.3-forge%2Bmc1.20.1.jar', '9097a2a57e7ed639bca072dd62e4a9257e86db89'),
+    @('LMML-1.20.1-8.3.1-Forge.jar', 'https://github.com/SistrScarlet/LittleMaidModelLoader-Architectury/releases/download/v8.3.1/LMML-1.20.1-8.3.1-Forge.jar', 'a3c3cf051dc6617338682e681ef2f90205c61c9f'),
+    @('LMRB-1.20.1-8.11.1-Forge.jar', 'https://github.com/SistrScarlet/LittleMaidReBirth-Architectury/releases/download/v8.11.1/LMRB-1.20.1-8.11.1-Forge.jar', '7b6da1ab000f61d77e12d8b08c96ab29b0dbd727'),
     @('urushi-1.20.1-6.7.0.jar', 'https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar', '5f9be08bf26b7750029aed63d7d4c20688e7065f')
 )
 $Shader = @('ComplementaryUnbound_r5.10.zip', 'https://cdn.modrinth.com/data/R6NEzAwj/versions/QJiYQisE/ComplementaryUnbound_r5.10.zip', '7a9a6b667b89d6b442837c5c367cd6cc8356b400')

@@ -34,7 +34,6 @@ CLIENT_ONLY = {
     'firstperson-forge-2.7.3-mc1.20.1.jar': '一人称で体が見える（クライアント専用）',
     'notenoughanimations-forge-1.12.7-mc1.20.1.jar': '手の動き（クライアント専用）',
     'CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar': 'カメラの揺れ',
-    'cloth-config-11.1.136-forge.jar': 'Camera Overhaul の設定画面用。ほかに使う mod がない',
 }
 
 # 前の版から外した mod(サーバーからも消してもらう): (外した版, ファイル名)
@@ -64,6 +63,7 @@ REMOVED = [
     ('v1.14.0', 'Patchouli-1.20.1-85-FORGE.jar'),
     ('v1.15.0', 'ToughAsNails-forge-1.20.1-9.2.0.171.jar'),
     ('v1.15.0', 'GlitchCore-forge-1.20.1-0.0.1.1.jar'),
+    ('v2.3.0', 'touhoulittlemaid-1.5.3-forge+mc1.20.1.jar'),
 ]
 
 
