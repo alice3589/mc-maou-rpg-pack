@@ -1,7 +1,7 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
 ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 79個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 66個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +23,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 79個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 66個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に。テクスチャ2つを有効にし、Distant Horizons の描画距離を 1024 に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -35,10 +35,10 @@
 ## 入っている mod
 
 **ボス・モブ・戦闘**
-L_Ender's Cataclysm / Mutant Iceologer / Peyro's Scythes & Spells / Iron's Spells 'n Spellbooks / Iron's RPG Tweaks / L2 Hostility / Pufferfish's Attributes / In Control!/ L2 Artifacts（長く育てるアーティファクト装備）/ Enhanced AI（クリーパーが壁を壊す・ゾンビが掘る・スケルトンが狙撃する）/ Enhanced Hordes（ゾンビが積み重なって壁を越え、群れで壁を壊す）/ Pufferfish's Skills + Default Skill Trees（戦闘と採掘のスキルツリー）
+L_Ender's Cataclysm / Mutant Iceologer / Peyro's Scythes & Spells / Iron's Spells 'n Spellbooks / Iron's RPG Tweaks / Pufferfish's Attributes / In Control!/ L2 Artifacts（長く育てるアーティファクト装備）/ Pufferfish's Skills + Default Skill Trees（戦闘と採掘のスキルツリー）
 
 **探索・構造物・バイオーム**
-Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better Trial Chambers / Integrated Stronghold / MES - Moog's End Structures / End Remastered / Feur Extension Fossil / aleki's Nifty Ships
+Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better Trial Chambers / MES - Moog's End Structures / End Remastered / Feur Extension Fossil / aleki's Nifty Ships
 
 **地形生成（v1.11.0〜）**
 Terralith（バイオーム95種以上）/ Tectonic 3（大陸と巨大な山脈）/ Incendium（ネザーの地形とバイオーム）
@@ -53,9 +53,7 @@ Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハー�
 MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）/ ItemPhysic Lite（落ちたアイテムが寝転がる・水に浮く）/ Sound Physics Remastered（洞窟で響く・壁の向こうの音がこもる）/ First-person Model（一人称で自分の体が見える）/ Not Enough Animations（一人称でも手の動きが細かくなる）/ Camera Overhaul（歩く・曲がるときにカメラが揺れる）
 
 **前提mod**
-Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / L2 Complements / Patchouli / Moog's Structure Lib / Integrated API / Lithostitched / AttributeFix / InsaneLib / GlitchCore / CreativeCore / Cloth Config / Create / Supplementaries / Quark / Zeta / Moonlight Lib / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
-
-> Create・Supplementaries・Quark は、Integrated Stronghold の最新版が必須にしているため入っています。
+Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / Moog's Structure Lib / Lithostitched / AttributeFix / GlitchCore / CreativeCore / Cloth Config / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
 
 ## 地形生成について（v1.11.0〜）
 
@@ -64,6 +62,21 @@ Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2
 - v1.3.0〜v1.8.0 に入れていた WWOO / CTOV / RoadWeaver / Streams Reflowing / Cristel Lib は入れていません。前の版の bat で入ったものは、bat をもう一度実行すると自動で消えます
 - **Nullscape（エンドの地形）は入れていません。** Stellarity と同じエンドのファイル（`the_end.json` やエンドのバイオーム）を書き換えるので、両方入れるとエンドがおかしくなります。エンドは Stellarity が担当します
 - **新しいワールドで遊んでください。** 地形の mod は、まだ生成されていない場所にしか効きません。前からあるワールドだと、境目で地形がぶつ切りになります
+
+## サーバーを軽くするために外した mod（v1.14.0）
+
+サーバーが重くて遊べなかったので、サーバーの負担が大きい mod を外しました（79個 → 66個、サーバー用 68個 → 55個）。
+
+| 外した mod | 一緒に外した前提 mod | 重かった理由 |
+| --- | --- | --- |
+| Integrated Stronghold（大きくなった要塞） | Integrated API / Create / Supplementaries / Quark / Zeta / Moonlight Lib | Create・Supplementaries・Quark はこの mod の前提として入れていただけで、どれもメモリを多く使う大きな mod でした（Create の中に Flywheel・Ponder も入っています） |
+| Enhanced AI（モブが壁を壊す・掘る・狙撃する） | InsaneLib | すべてのモブの AI の処理が重くなる |
+| Enhanced Hordes（ゾンビの群れ） | — | モブの数が増える |
+| L2 Hostility（モブに特性がついて強くなる） | L2 Complements / Patchouli | モブ1体ごとに処理が増える |
+
+- bat をもう一度実行すると `mods` から自動で消えます
+- **サーバーの `mods` からも、この13個の .jar を消してください**（[server-mods.md](server-mods.md) の一覧にない .jar がそれです）
+- **外した mod のブロックやアイテムはワールドから消えます。** 外す前にワールドのバックアップを取ってください
 
 ## Cataclysm: Spellbooks を外した理由（v1.13.2）
 

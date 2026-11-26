@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.13.4'
+$PackVersion = '1.14.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -37,15 +37,11 @@ $Mods = @(
     @('L_Enders_Cataclysm-3.31.jar', 'https://cdn.modrinth.com/data/46KJle7n/versions/C3H0azzB/L_Enders_Cataclysm-3.31.jar', '4f1165cb39521292e826b471b4808bb89f0f4f3f'),
     @('Mutant Iceologer 2.0.2.jar', 'https://cdn.modrinth.com/data/9lbfIPsl/versions/JKht7D2L/Mutant%20Iceologer%202.0.2.jar', 'b6922c916f99ccacdce04b22e334c30709a533c0'),
     @('irons_rpg_tweaks-1.20.1-2.2.3.jar', 'https://cdn.modrinth.com/data/otXdBiS4/versions/MzBQUoDf/irons_rpg_tweaks-1.20.1-2.2.3.jar', '610d660a9044fa15a07f84cec59c01ab5dfc7fed'),
-    @('l2hostility-2.5.19.jar', 'https://cdn.modrinth.com/data/CbV689EN/versions/ou0FsY4Y/l2hostility-2.5.19.jar', 'c6ffd9632fd372e83e1ef4d3cc35c8d3c4e15be7'),
     @('irons_spellbooks-1.20.1-3.16.4.jar', 'https://cdn.modrinth.com/data/s4OWxYQQ/versions/cBUZsds9/irons_spellbooks-1.20.1-3.16.4.jar', '7b41fc23ef37f9fa6f1ba747e5d24dae8ac4c3ed'),
     @('puffish_attributes-0.8.2-1.20-forge.jar', 'https://cdn.modrinth.com/data/FCFcFw09/versions/IG5KY4Qf/puffish_attributes-0.8.2-1.20-forge.jar', 'c6ff07c4ee3111b480fee577cb98c3671cf063b8'),
     @('incontrol-1.20-9.5.1.jar', 'https://cdn.modrinth.com/data/KpICtuVx/versions/gkF4yuGW/incontrol-1.20-9.5.1.jar', '57db24e561a4aa373ca6832816e010ed03bd6a1a'),
     @('l2artifacts-2.4.28.jar', 'https://cdn.modrinth.com/data/8RtpLoXH/versions/J6xK6xft/l2artifacts-2.4.28.jar', '0b70963d598fb41a0a235c28bfec57e3cdfbdb55'),
     @('AttributeFix-Forge-1.20.1-21.0.5.jar', 'https://cdn.modrinth.com/data/lOOpEntO/versions/ihWybkI9/AttributeFix-Forge-1.20.1-21.0.5.jar', '76d6b2d0f2a3c9842587ad20666ba419cd8c1efa'),
-    @('enhancedai-3.3.7.5.jar', 'https://cdn.modrinth.com/data/TDdoftI1/versions/FNZd08F4/enhancedai-3.3.7.5.jar', '8cb138410fd857d457a26eca5315546fd0417319'),
-    @('insanelib-1.23.4.6.jar', 'https://cdn.modrinth.com/data/USZyvOJq/versions/azl3fnxF/insanelib-1.23.4.6.jar', 'cca086a7ff34c4ffadb3caf3e825acb87f7e7322'),
-    @('eh2.0-forge1.20.1.jar', 'https://cdn.modrinth.com/data/WzjqFyWg/versions/ik3VZul9/eh2.0-forge1.20.1.jar', '3bcc0609965bb082764f43c75020b33e95bdda88'),
     @('puffish_skills-0.19.2-1.20-forge.jar', 'https://cdn.modrinth.com/data/hqQqvaa4/versions/zfbPzmtb/puffish_skills-0.19.2-1.20-forge.jar', '7646e1a377506dcdd6d3b0806321ba429392155a'),
     @('default_skill_trees-1.1.jar', 'https://cdn.modrinth.com/data/4w7YR25f/versions/x7XL8Z3U/default_skill_trees-1.1.jar', '564a1320a4d26de1ad476687ce1920ccd12c142c'),
     @('Explorify v1.6.6.mod.jar', 'https://cdn.modrinth.com/data/HSfsxuTo/versions/oyrAnNG8/Explorify%20v1.6.6.mod.jar', 'd7b21626ad33d898536634764cec6c9a8cd55063'),
@@ -53,7 +49,6 @@ $Mods = @(
     @('Stellarity-v2-0e.jar', 'https://cdn.modrinth.com/data/bZgeDzN8/versions/RKcXZAPf/Stellarity-v2-0e.jar', 'd54f54446b7afaed0c7bdf9679bc376f4913d16c'),
     @('MoogsNetherStructures-universal-1.20-3.1.0.jar', 'https://cdn.modrinth.com/data/nGUXvjTa/versions/bcwhyj8t/MoogsNetherStructures-universal-1.20-3.1.0.jar', 'fcfef161397f7865e3a6642c5170cd13fd7ad9ef'),
     @('Better_Trial_Chambers_1.2.0_version_1.20.1.jar', 'https://cdn.modrinth.com/data/llAgr1pa/versions/FYdegIUn/Better_Trial_Chambers_1.2.0_version_1.20.1.jar', '16d450e25ee667cb5cec5ae87006019db902ab48'),
-    @('integrated_stronghold-1.1.1+1.20.1-forge.jar', 'https://cdn.modrinth.com/data/KUJdfPQz/versions/HX8UIG5u/integrated_stronghold-1.1.1%2B1.20.1-forge.jar', 'bfc95490873ae0563c9df4613f7ad70f3b17b402'),
     @('MoogsEndStructures-universal-1.20-2.1.0.jar', 'https://cdn.modrinth.com/data/r4PuRGfV/versions/ROvChtQg/MoogsEndStructures-universal-1.20-2.1.0.jar', 'a581935313f819fe67bbe810e03fb8a44b356089'),
     @('endrem_forge-5.3.3-R-1.20.1.jar', 'https://cdn.modrinth.com/data/ZJTGwAND/versions/SQS2aSUl/endrem_forge-5.3.3-R-1.20.1.jar', 'b4df41de8439e834a493fe59842709ef33ecfa82'),
     @('feur_extension_fossil-1.20.1-forge.jar', 'https://cdn.modrinth.com/data/yGr5XHdT/versions/flNgX6Hq/feur_extension_fossil-1.20.1-forge.jar', '30924088094cecbc8837a8c21f3c55fedcd63450'),
@@ -81,19 +76,11 @@ $Mods = @(
     @('geckolib-forge-1.20.1-4.8.5.jar', 'https://cdn.modrinth.com/data/8BmcQJ2H/versions/dBtjgm8n/geckolib-forge-1.20.1-4.8.5.jar', 'a117dc87ce46a5ea0da0f549199d2e80e81a26fe'),
     @('lionfishapi-3.0.jar', 'https://cdn.modrinth.com/data/FoVacERa/versions/CPftDBcY/lionfishapi-3.0.jar', '79d0404f87fa066480b18c844c1e0b1c5f5475f9'),
     @('l2library-2.5.7.jar', 'https://cdn.modrinth.com/data/4Vh3BQ3F/versions/sQK4WsgJ/l2library-2.5.7.jar', 'a5c488b8ded665d33add1e5bc58b823ef4b70883'),
-    @('l2complements-2.6.1.jar', 'https://cdn.modrinth.com/data/oPrh2Lz3/versions/TvdiYrC4/l2complements-2.6.1.jar', '7f00690dcc850e65cae7fc6012cec37fee8664b0'),
-    @('Patchouli-1.20.1-85-FORGE.jar', 'https://cdn.modrinth.com/data/nU0bVIaL/versions/94dtOLgZ/Patchouli-1.20.1-85-FORGE.jar', 'd4614507d6e4c7cb464bba5eca891978272062ef'),
     @('MoogsStructureLib-forge-1.20-3.4.2.jar', 'https://cdn.modrinth.com/data/1oUDhxuy/versions/zuKYMmUt/MoogsStructureLib-forge-1.20-3.4.2.jar', 'f91a62466de6e9b3a1166a1e88a837668cbb6eae'),
-    @('integrated_api-forge-1.20.1-1.9.2.jar', 'https://cdn.modrinth.com/data/V6fKbpBN/versions/4x5T8HMF/integrated_api-forge-1.20.1-1.9.2.jar', '986d3db1bd31af79b3c27d26197f249babf597ad'),
     @('GlitchCore-forge-1.20.1-0.0.1.1.jar', 'https://cdn.modrinth.com/data/s3dmwKy5/versions/pYPZ5MNI/GlitchCore-forge-1.20.1-0.0.1.1.jar', 'bba0b08fe76b28b35243fee53f99d54a18153b53'),
     @('caelus-forge-3.2.0+1.20.1.jar', 'https://cdn.modrinth.com/data/40FYwb4z/versions/mRry0DgY/caelus-forge-3.2.0%2B1.20.1.jar', 'd14e8ee892d4d8764f523ad0e89bdcfc061fb007'),
     @('player-animation-lib-forge-1.0.2-rc1+1.20.jar', 'https://cdn.modrinth.com/data/gedNE4y2/versions/xe2EVE6q/player-animation-lib-forge-1.0.2-rc1%2B1.20.jar', '16808f94a41d45d8e986b4e4ea6b02ba57fa058a'),
     @('irons_lib-1.20.1-2.4.0.jar', 'https://cdn.modrinth.com/data/9nfaJPtX/versions/GxKHQobH/irons_lib-1.20.1-2.4.0.jar', '30f90c83ac5a2c0f1ccc9a11666a1d5469b524c0'),
-    @('create-1.20.1-6.0.8.jar', 'https://cdn.modrinth.com/data/LNytGWDc/versions/8amzvn9x/create-1.20.1-6.0.8.jar', 'b13d912b9247a38d66d11598c121442585a1c1e9'),
-    @('supplementaries-1.20-3.1.45-forge.jar', 'https://cdn.modrinth.com/data/fFEIiSDQ/versions/geO7x6Vi/supplementaries-1.20-3.1.45-forge.jar', 'cca362c149570e3926aac82be199d66aaf94928a'),
-    @('Quark-4.0-462.jar', 'https://cdn.modrinth.com/data/qnQsVE2z/versions/DijQLauD/Quark-4.0-462.jar', '9b0fb82995622a0070c00827c698c43b49d9d14b'),
-    @('Zeta-1.0-31.jar', 'https://cdn.modrinth.com/data/MVARlG2f/versions/mSER3jBI/Zeta-1.0-31.jar', '8c4a8ef0444b53ff408d5b89126285031081d92f'),
-    @('moonlight-1.20-2.16.39-forge.jar', 'https://cdn.modrinth.com/data/twkfQtEc/versions/rF6052yd/moonlight-1.20-2.16.39-forge.jar', '12405de298c0d6c8ba53effdc5c8f28edee3aadc'),
     @('solcarrot-1.20.1-1.15.1.jar', 'https://mediafilez.forgecdn.net/files/4888/575/solcarrot-1.20.1-1.15.1.jar', 'f7fa1fd0c633b10f98d7f0f97766b95aac1a2dc0'),
     @('PeyroScythe-Forge-1.20.1-1.3.3.jar', 'https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar', '70cbd842c70c2f3967177ce60feabc8a2b60012f'),
     @('architectury-9.1.13-forge.jar', 'https://cdn.modrinth.com/data/lhGA9TYQ/versions/tBWqtdBO/architectury-9.1.13-forge.jar', 'ef7558f149fc5db623f15aa7bf942f7ead5b8f0d'),
