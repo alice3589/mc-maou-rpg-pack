@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '1.15.0'
+$PackVersion = '2.0.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -34,32 +34,10 @@ $Work = Join-Path $env:TEMP 'maou-rpg-installer'
 
 # file name, download URL, SHA-1
 $Mods = @(
-    @('L_Enders_Cataclysm-3.31.jar', 'https://cdn.modrinth.com/data/46KJle7n/versions/C3H0azzB/L_Enders_Cataclysm-3.31.jar', '4f1165cb39521292e826b471b4808bb89f0f4f3f'),
-    @('Mutant Iceologer 2.0.2.jar', 'https://cdn.modrinth.com/data/9lbfIPsl/versions/JKht7D2L/Mutant%20Iceologer%202.0.2.jar', 'b6922c916f99ccacdce04b22e334c30709a533c0'),
-    @('irons_rpg_tweaks-1.20.1-2.2.3.jar', 'https://cdn.modrinth.com/data/otXdBiS4/versions/MzBQUoDf/irons_rpg_tweaks-1.20.1-2.2.3.jar', '610d660a9044fa15a07f84cec59c01ab5dfc7fed'),
-    @('irons_spellbooks-1.20.1-3.16.4.jar', 'https://cdn.modrinth.com/data/s4OWxYQQ/versions/cBUZsds9/irons_spellbooks-1.20.1-3.16.4.jar', '7b41fc23ef37f9fa6f1ba747e5d24dae8ac4c3ed'),
-    @('puffish_attributes-0.8.2-1.20-forge.jar', 'https://cdn.modrinth.com/data/FCFcFw09/versions/IG5KY4Qf/puffish_attributes-0.8.2-1.20-forge.jar', 'c6ff07c4ee3111b480fee577cb98c3671cf063b8'),
-    @('incontrol-1.20-9.5.1.jar', 'https://cdn.modrinth.com/data/KpICtuVx/versions/gkF4yuGW/incontrol-1.20-9.5.1.jar', '57db24e561a4aa373ca6832816e010ed03bd6a1a'),
-    @('l2artifacts-2.4.28.jar', 'https://cdn.modrinth.com/data/8RtpLoXH/versions/J6xK6xft/l2artifacts-2.4.28.jar', '0b70963d598fb41a0a235c28bfec57e3cdfbdb55'),
-    @('AttributeFix-Forge-1.20.1-21.0.5.jar', 'https://cdn.modrinth.com/data/lOOpEntO/versions/ihWybkI9/AttributeFix-Forge-1.20.1-21.0.5.jar', '76d6b2d0f2a3c9842587ad20666ba419cd8c1efa'),
-    @('puffish_skills-0.19.2-1.20-forge.jar', 'https://cdn.modrinth.com/data/hqQqvaa4/versions/zfbPzmtb/puffish_skills-0.19.2-1.20-forge.jar', '7646e1a377506dcdd6d3b0806321ba429392155a'),
-    @('default_skill_trees-1.1.jar', 'https://cdn.modrinth.com/data/4w7YR25f/versions/x7XL8Z3U/default_skill_trees-1.1.jar', '564a1320a4d26de1ad476687ce1920ccd12c142c'),
-    @('Explorify v1.6.6.mod.jar', 'https://cdn.modrinth.com/data/HSfsxuTo/versions/oyrAnNG8/Explorify%20v1.6.6.mod.jar', 'd7b21626ad33d898536634764cec6c9a8cd55063'),
-    @('deepwaters-25_5 forge 1_20_1.jar', 'https://cdn.modrinth.com/data/buvNMuzc/versions/3o5AjcRZ/deepwaters-25_5%20forge%201_20_1.jar', 'e59c6b5cda6642f2f502de72eb3efe3c8f255d92'),
-    @('Stellarity-v2-0e.jar', 'https://cdn.modrinth.com/data/bZgeDzN8/versions/RKcXZAPf/Stellarity-v2-0e.jar', 'd54f54446b7afaed0c7bdf9679bc376f4913d16c'),
-    @('MoogsNetherStructures-universal-1.20-3.1.0.jar', 'https://cdn.modrinth.com/data/nGUXvjTa/versions/bcwhyj8t/MoogsNetherStructures-universal-1.20-3.1.0.jar', 'fcfef161397f7865e3a6642c5170cd13fd7ad9ef'),
-    @('Better_Trial_Chambers_1.2.0_version_1.20.1.jar', 'https://cdn.modrinth.com/data/llAgr1pa/versions/FYdegIUn/Better_Trial_Chambers_1.2.0_version_1.20.1.jar', '16d450e25ee667cb5cec5ae87006019db902ab48'),
-    @('MoogsEndStructures-universal-1.20-2.1.0.jar', 'https://cdn.modrinth.com/data/r4PuRGfV/versions/ROvChtQg/MoogsEndStructures-universal-1.20-2.1.0.jar', 'a581935313f819fe67bbe810e03fb8a44b356089'),
-    @('endrem_forge-5.3.3-R-1.20.1.jar', 'https://cdn.modrinth.com/data/ZJTGwAND/versions/SQS2aSUl/endrem_forge-5.3.3-R-1.20.1.jar', 'b4df41de8439e834a493fe59842709ef33ecfa82'),
-    @('feur_extension_fossil-1.20.1-forge.jar', 'https://cdn.modrinth.com/data/yGr5XHdT/versions/flNgX6Hq/feur_extension_fossil-1.20.1-forge.jar', '30924088094cecbc8837a8c21f3c55fedcd63450'),
-    @('alekiNiftyShips-FORGE-1.20.1-1.0.14.jar', 'https://cdn.modrinth.com/data/vuNeeDyl/versions/VX4fjmf1/alekiNiftyShips-FORGE-1.20.1-1.0.14.jar', 'c42aaab43cd524c45c4065996cc06b9b48c5682a'),
     @('Terralith_1.20.x_v2.5.4.jar', 'https://cdn.modrinth.com/data/8oi3bsk5/versions/WeYhEb5d/Terralith_1.20.x_v2.5.4.jar', '79e1409b8db4ce86df9d6d6730f09c4bd8860a30'),
     @('tectonic-3.0.17-forge-1.20.1.jar', 'https://cdn.modrinth.com/data/lWDHr9jE/versions/KLmvRxwh/tectonic-3.0.17-forge-1.20.1.jar', '07bfe13bc1bd75a6277f3d62bf92a549b33067a9'),
     @('lithostitched-forge-1.20.1-1.4.12.jar', 'https://cdn.modrinth.com/data/XaDC71GB/versions/Uqt1Zm1l/lithostitched-forge-1.20.1-1.4.12.jar', 'c8a23f9c1975f11a8d10110aa862251a6043db78'),
     @('Incendium_1.20.x_v5.3.5.jar', 'https://cdn.modrinth.com/data/ZVzW5oNS/versions/uUqarp2H/Incendium_1.20.x_v5.3.5.jar', '484556937b1b2dde2682144e7953e79bff717104'),
-    @('fantasy-armor-1.3.1-1.20.1-forge.jar', 'https://cdn.modrinth.com/data/oVmpjYQ5/versions/e2QSYfvf/fantasy-armor-1.3.1-1.20.1-forge.jar', '270d1b008faf53015a4223923671d9e375e9ff81'),
-    @('wider_ender_chests-forge-1.20.1-1.0.4.jar', 'https://cdn.modrinth.com/data/EDVt0J2I/versions/D91QPP3a/wider_ender_chests-forge-1.20.1-1.0.4.jar', '4bf753f31205a66a5502ba1875f7daf011e94e67'),
-    @('Pehkui-3.8.2+1.20.1-forge.jar', 'https://cdn.modrinth.com/data/t5W7Jfwy/versions/SQpqSgAE/Pehkui-3.8.2%2B1.20.1-forge.jar', '4bc816efdd8e5e2a97423313674401351710e403'),
     @('MinecraftCapes Forge 1.20.1-1.1.0.jar', 'https://cdn.modrinth.com/data/9gNVPfzw/versions/d5ILkObu/MinecraftCapes%20Forge%201.20.1-1.1.0.jar', '0bf2b5ce31b177b1472ed7f33b2e7452bcbf9955'),
     @('oculus-mc1.20.1-1.8.0.jar', 'https://cdn.modrinth.com/data/GchcoXML/versions/iQ1SwGc3/oculus-mc1.20.1-1.8.0.jar', '984f774e71790deaec674c7587bd24e0711871b2'),
     @('embeddium-0.3.31+mc1.20.1.jar', 'https://cdn.modrinth.com/data/sk9rgfiA/versions/UTbfe5d1/embeddium-0.3.31%2Bmc1.20.1.jar', 'bb2fa8f3e493af16af9160d049f96c614a1faf2f'),
@@ -71,32 +49,14 @@ $Mods = @(
     @('CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar', 'https://cdn.modrinth.com/data/m0oRwcZx/versions/Apl3bbtA/CameraOverhaul-v2.1.2-forge%2Bmc%5B1.20-1.20.5%5D.jar', '2b9e4499b00449e670a9dd399dddbb9cd7c0e531'),
     @('notenoughanimations-forge-1.12.7-mc1.20.1.jar', 'https://cdn.modrinth.com/data/MPCX6s5C/versions/3YRHi2mE/notenoughanimations-forge-1.12.7-mc1.20.1.jar', '94b051bda7fd0e7f8e8b119db779d3a9c8730f80'),
     @('cloth-config-11.1.136-forge.jar', 'https://cdn.modrinth.com/data/9s6osm5g/versions/t8TXrZvZ/cloth-config-11.1.136-forge.jar', 'c65d07748acc57ceb45d53b3964368b84f34d54f'),
-    @('curios-forge-5.14.1+1.20.1.jar', 'https://cdn.modrinth.com/data/vvuO3ImH/versions/IPQlZkz1/curios-forge-5.14.1%2B1.20.1.jar', '452175b95ad3db6ff58bb8968f6bf7a9d1e0f480'),
-    @('geckolib-forge-1.20.1-4.8.5.jar', 'https://cdn.modrinth.com/data/8BmcQJ2H/versions/dBtjgm8n/geckolib-forge-1.20.1-4.8.5.jar', 'a117dc87ce46a5ea0da0f549199d2e80e81a26fe'),
-    @('lionfishapi-3.0.jar', 'https://cdn.modrinth.com/data/FoVacERa/versions/CPftDBcY/lionfishapi-3.0.jar', '79d0404f87fa066480b18c844c1e0b1c5f5475f9'),
-    @('l2library-2.5.7.jar', 'https://cdn.modrinth.com/data/4Vh3BQ3F/versions/sQK4WsgJ/l2library-2.5.7.jar', 'a5c488b8ded665d33add1e5bc58b823ef4b70883'),
-    @('MoogsStructureLib-forge-1.20-3.4.2.jar', 'https://cdn.modrinth.com/data/1oUDhxuy/versions/zuKYMmUt/MoogsStructureLib-forge-1.20-3.4.2.jar', 'f91a62466de6e9b3a1166a1e88a837668cbb6eae'),
-    @('caelus-forge-3.2.0+1.20.1.jar', 'https://cdn.modrinth.com/data/40FYwb4z/versions/mRry0DgY/caelus-forge-3.2.0%2B1.20.1.jar', 'd14e8ee892d4d8764f523ad0e89bdcfc061fb007'),
-    @('player-animation-lib-forge-1.0.2-rc1+1.20.jar', 'https://cdn.modrinth.com/data/gedNE4y2/versions/xe2EVE6q/player-animation-lib-forge-1.0.2-rc1%2B1.20.jar', '16808f94a41d45d8e986b4e4ea6b02ba57fa058a'),
-    @('irons_lib-1.20.1-2.4.0.jar', 'https://cdn.modrinth.com/data/9nfaJPtX/versions/GxKHQobH/irons_lib-1.20.1-2.4.0.jar', '30f90c83ac5a2c0f1ccc9a11666a1d5469b524c0'),
-    @('solcarrot-1.20.1-1.15.1.jar', 'https://mediafilez.forgecdn.net/files/4888/575/solcarrot-1.20.1-1.15.1.jar', 'f7fa1fd0c633b10f98d7f0f97766b95aac1a2dc0'),
-    @('PeyroScythe-Forge-1.20.1-1.3.3.jar', 'https://mediafilez.forgecdn.net/files/8220/963/PeyroScythe-Forge-1.20.1-1.3.3.jar', '70cbd842c70c2f3967177ce60feabc8a2b60012f'),
-    @('architectury-9.1.13-forge.jar', 'https://cdn.modrinth.com/data/lhGA9TYQ/versions/tBWqtdBO/architectury-9.1.13-forge.jar', 'ef7558f149fc5db623f15aa7bf942f7ead5b8f0d'),
-    @('letsdo-API-forge-1.2.15-forge.jar', 'https://cdn.modrinth.com/data/4XJZeZbM/versions/uEaTMht9/letsdo-API-forge-1.2.15-forge.jar', 'a261043a45097d861a13a63ebdbb0ca350e06a63'),
     @('mysterious_mountain_lib-1.6.34-1.20.1.jar', 'https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar', '4fb6e35edf9384fde736cd9ee972468d65f61dce'),
     @('Cucumber-1.20.1-7.0.16.jar', 'https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar', '88a9ec30e4acb5c80a3ae060ad70b79e945293c6'),
-    @('balm-forge-1.20.1-7.3.44.jar', 'https://mediafilez.forgecdn.net/files/8969/708/balm-forge-1.20.1-7.3.44.jar', 'b3f8a6a5823d3b4f2dce19c8aea9373e24bcb443'),
     @('bagus_lib-1.20.1-5.6.1.jar', 'https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar', 'd62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba'),
-    @('BetterAdvancements-Forge-1.20.1-0.4.2.60.jar', 'https://cdn.modrinth.com/data/Q2OqKxDG/versions/EKwDaD23/BetterAdvancements-Forge-1.20.1-0.4.2.60.jar', '42be4c5315133a8059c27e15c41b22edc26e9a98'),
-    @('cookingforblockheads-forge-1.20.1-16.0.16.jar', 'https://mediafilez.forgecdn.net/files/9647/269/cookingforblockheads-forge-1.20.1-16.0.16.jar', 'bec451505c1173cccb6dcd648d8ccf53d72a95cf'),
-    @('letsdo-bakery-forge-1.1.15.jar', 'https://cdn.modrinth.com/data/WFwYiVoG/versions/Jo8EwiDR/letsdo-bakery-forge-1.1.15.jar', 'c5cd44088089fca03f3291b851dcb0d00018fecb'),
-    @('letsdo-brewery-forge-1.1.9.jar', 'https://cdn.modrinth.com/data/cV5LQXKx/versions/vqYszE4F/letsdo-brewery-forge-1.1.9.jar', '50e5181e734dcfc599aa0eaac376ff4e312f63c2'),
-    @('letsdo-herbalbrews-forge-1.0.12.jar', 'https://cdn.modrinth.com/data/Eh11TaTm/versions/qKfEj2BA/letsdo-herbalbrews-forge-1.0.12.jar', '3de7feb383868a0db45351580d6ef5b05b776f16'),
-    @('letsdo-vinery-forge-1.4.41.jar', 'https://cdn.modrinth.com/data/1DWmBJVA/versions/2I4cH49O/letsdo-vinery-forge-1.4.41.jar', '68ed3fa9524bef601064f49f60a30423db2f8fdc'),
     @('MysticalAgradditions-1.20.1-7.0.12.jar', 'https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar', 'b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9'),
     @('MysticalAgriculture-1.20.1-7.0.24.jar', 'https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar', 'e8839d207456a47ed6a576469901a087319b505f'),
     @('Sakura-1.1.16-1.20.1.jar', 'https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar', '03ce0fdaf0827d39b6223556aac25b39f5309323'),
     @('TofuCraftReload-1.20.1-5.18.4.0.jar', 'https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar', 'a3c1ef9f3d1f808f55ee34447747441e9f9f1195'),
+    @('HeatAndClimate-1.20.1-v5.0.6.jar', 'https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar', 'f8e5dab4794c54fb3cff27ac6e814778bb416d38'),
     @('urushi-1.20.1-6.7.0.jar', 'https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar', '5f9be08bf26b7750029aed63d7d4c20688e7065f')
 )
 $Shader = @('ComplementaryUnbound_r5.10.zip', 'https://cdn.modrinth.com/data/R6NEzAwj/versions/QJiYQisE/ComplementaryUnbound_r5.10.zip', '7a9a6b667b89d6b442837c5c367cd6cc8356b400')
@@ -297,6 +257,23 @@ if (Test-Path -LiteralPath $Dh) {
     [IO.File]::WriteAllText($Dh, "_version = 5`n`n[client.advanced.graphics.quality]`n`tlodChunkRenderDistanceRadius = $DhRenderDistance`n")
 }
 Say "    Distant Horizons: render distance $DhRenderDistance chunks"
+
+# Heat and Climate (v2.0.0~): seasons, weather and crop climate stay, but body temperature is off:
+# climate damage (common, the server's file decides on a server) and the climate HUD (client) are turned off.
+# If a file does not exist yet, write only that option; Forge fills in the rest with defaults on first start.
+function Set-HacOption($file, $section, $key, $value) {
+    $line = "`t""$key"" = $value"
+    if (Test-Path -LiteralPath $file) {
+        $t = [IO.File]::ReadAllText($file)
+        $t2 = [regex]::Replace($t, '(?m)^(\s*"' + [regex]::Escape($key) + '"\s*=\s*)\S+', ('${1}' + $value))
+        if ($t2 -ne $t) { [IO.File]::WriteAllText($file, $t2) }
+    } else {
+        [IO.File]::WriteAllText($file, "[$section]`n$line`n")
+    }
+}
+Set-HacOption (Join-Path $GameDir 'config\dcs_climate-common.toml') 'climate_config' 'Enable Climate Damage' 'false'
+Set-HacOption (Join-Path $GameDir 'config\dcs_climate-client.toml') 'render_config' 'Show Climate HUD' 'false'
+Say '    Heat and Climate: climate damage off, climate HUD off (seasons and crops stay)'
 
 # --- 4. Launcher profile ---
 Say '[4/4] Adding the launcher profile ...'

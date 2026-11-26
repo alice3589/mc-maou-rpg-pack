@@ -1,7 +1,8 @@
 # 魔王討伐RPGパック（Minecraft 1.20.1 / Forge）
 
-ボス・ダンジョン・魔法・サバイバル要素を詰めたmod構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 64個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+地形・見た目・農業や和風の別世界の mod 構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
+（v2.0.0 で、ボス・魔法・構造物などの mod はいったん外しています）
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 24個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -23,7 +24,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 64個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 24個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に。テクスチャ2つを有効にし、Distant Horizons の描画距離を 1024 に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -32,70 +33,50 @@
   念のため `launcher_profiles.json.bak-maou-rpg` にバックアップを作ります。
 - mod は Modrinth / CurseForge の公式配布元から直接ダウンロードします（このリポジトリに mod は入っていません）。
 
-## 入っている mod
+## 入っている mod（v2.0.0〜）
 
-**ボス・モブ・戦闘**
-L_Ender's Cataclysm / Mutant Iceologer / Peyro's Scythes & Spells / Iron's Spells 'n Spellbooks / Iron's RPG Tweaks / Pufferfish's Attributes / In Control!/ L2 Artifacts（長く育てるアーティファクト装備）/ Pufferfish's Skills + Default Skill Trees（戦闘と採掘のスキルツリー）
-
-**探索・構造物・バイオーム**
-Explorify / Deep Waters / Stellarity / MNS - Moog's Nether Structures / Better Trial Chambers / MES - Moog's End Structures / End Remastered / Feur Extension Fossil / aleki's Nifty Ships
-
-**地形生成（v1.11.0〜）**
+**地形生成**
 Terralith（バイオーム95種以上）/ Tectonic 3（大陸と巨大な山脈）/ Incendium（ネザーの地形とバイオーム）
 
-**装備・便利・調整**
-Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition
-
-**料理・農業・別世界（友達の追加分, v1.7.0〜）**
-Let's Do Bakery / Brewery / HerbalBrews / Vinery（パン・ビール・ハーブティー・ワイン作り）/ Cooking for Blockheads（キッチンで料理をまとめて作る）/ Mystical Agriculture + Agradditions（鉱石や資源を畑で育てる）/ Sakura（桜と和風の食べ物）/ TofuCraft Reload（豆腐の世界）/ Urushi（和風ブロックと隠世ディメンション）/ Better Advancements（進捗画面が見やすくなる）
+**農業・和風・別世界**
+Mystical Agriculture + Agradditions（鉱石や資源を畑で育てる）/ Sakura（桜と和風の食べ物）/ TofuCraft Reload（豆腐の世界）/ Urushi（和風ブロックと隠世ディメンション）/ Heat and Climate（季節・天気・作物の気候。体温は切っています）
 
 **見た目**
 MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）/ ItemPhysic Lite（落ちたアイテムが寝転がる・水に浮く）/ Sound Physics Remastered（洞窟で響く・壁の向こうの音がこもる）/ First-person Model（一人称で自分の体が見える）/ Not Enough Animations（一人称でも手の動きが細かくなる）/ Camera Overhaul（歩く・曲がるときにカメラが揺れる）
 
 **前提mod**
-Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / Moog's Structure Lib / Lithostitched / AttributeFix / CreativeCore / Cloth Config / Architectury / Let's Do API / Mysterious Mountain Lib / Cucumber / Balm / Bagus Lib
+Lithostitched / CreativeCore / Cloth Config / Mysterious Mountain Lib / Cucumber / Bagus Lib
 
 ## 地形生成について（v1.11.0〜）
 
 - オーバーワールドは **Terralith + Tectonic 3**、ネザーは **Incendium** で作り直されます
 - Tectonic は v3 系（3.0.17）です。前提の Lithostitched も入ります
 - v1.3.0〜v1.8.0 に入れていた WWOO / CTOV / RoadWeaver / Streams Reflowing / Cristel Lib は入れていません。前の版の bat で入ったものは、bat をもう一度実行すると自動で消えます
-- **Nullscape（エンドの地形）は入れていません。** Stellarity と同じエンドのファイル（`the_end.json` やエンドのバイオーム）を書き換えるので、両方入れるとエンドがおかしくなります。エンドは Stellarity が担当します
+- エンドは v2.0.0 からバニラのままです（Stellarity を外したため）
 - **新しいワールドで遊んでください。** 地形の mod は、まだ生成されていない場所にしか効きません。前からあるワールドだと、境目で地形がぶつ切りになります
 
-## サーバーを軽くするために外した mod（v1.14.0）
+## v2.0.0 でいったん減らした mod
 
-サーバーが重くて遊べなかったので、サーバーの負担が大きい mod を外しました（79個 → 66個、サーバー用 68個 → 55個）。
+地形・見た目・農業や和風の mod だけにして、64個から24個（サーバー用 53個から14個）に減らしました。外したのは次の mod です。
 
-| 外した mod | 一緒に外した前提 mod | 重かった理由 |
-| --- | --- | --- |
-| Integrated Stronghold（大きくなった要塞） | Integrated API / Create / Supplementaries / Quark / Zeta / Moonlight Lib | Create・Supplementaries・Quark はこの mod の前提として入れていただけで、どれもメモリを多く使う大きな mod でした（Create の中に Flywheel・Ponder も入っています） |
-| Enhanced AI（モブが壁を壊す・掘る・狙撃する） | InsaneLib | すべてのモブの AI の処理が重くなる |
-| Enhanced Hordes（ゾンビの群れ） | — | モブの数が増える |
-| L2 Hostility（モブに特性がついて強くなる） | L2 Complements / Patchouli | モブ1体ごとに処理が増える |
+- ボス・モブ・戦闘: L_Ender's Cataclysm / Mutant Iceologer / Peyro's Scythes & Spells / Iron's Spells 'n Spellbooks / Iron's RPG Tweaks / Pufferfish's Attributes / Pufferfish's Skills + Default Skill Trees / In Control! / L2 Artifacts
+- 探索・構造物: Explorify / Deep Waters / Stellarity / MNS / MES / Better Trial Chambers / End Remastered / Feur Extension Fossil / aleki's Nifty Ships
+- 装備・便利: Fantasy Armor / Wider Ender Chests / Pehkui / Spice of Life: Carrot Edition
+- 料理: Let's Do Bakery / Brewery / HerbalBrews / Vinery / Cooking for Blockheads / Better Advancements
+- 前提: Curios API / GeckoLib / Iron's Lib / Caelus / playerAnimator / Lionfish API / L2 Library / Moog's Structure Lib / AttributeFix / Architectury / Let's Do API / Balm
 
+注意:
 - bat をもう一度実行すると `mods` から自動で消えます
-- **サーバーの `mods` からも、この13個の .jar を消してください**（[server-mods.md](server-mods.md) の一覧にない .jar がそれです）
-- **外した mod のブロックやアイテムはワールドから消えます。** 外す前にワールドのバックアップを取ってください
+- **サーバーは `mods` を一度空にして、[server-mods.md](server-mods.md) の14個を入れ直してください**
+- **外した mod のブロックやアイテムはワールドから消えます。** 先にワールドのバックアップを取ってください
+- 前の版で入れて外したもの（v1.14.0 の Integrated Stronghold / Create / Quark / Enhanced AI / L2 Hostility など、v1.13.4 の YDM's Weapon Master、v1.13.2 の Cataclysm: Spellbooks、v1.15.0 の Tough As Nails）は、それぞれの版の Release に理由を書いています
 
-## Cataclysm: Spellbooks を外した理由（v1.13.2）
+## 暑さ・寒さについて（v2.0.0〜）
 
-- v1.13.0〜v1.13.1 に入れていた **Cataclysm: Spellbooks 1.2.9** は、起動時に `ModLoadingException ... cataclysm_spellbooks ... common_setup` で落ちるため外しました
-- 原因: Spellbooks は Cataclysm 3.16 の古い Ancient Remnant の描画クラス（`Ancient_Remnant_Rework_Renderer`）を使っていますが、Cataclysm 3.24 以降でこのボスが作り直されてクラスがなくなりました。このパックの Cataclysm は 3.31 です。1.20.1 用の Spellbooks は 1.2.9 が最新で、新しい Cataclysm に対応した版はまだありません
-- 前提だった AzureLib も、ほかに使う mod がないので一緒に外しました。bat をもう一度実行すると `mods` から自動で消えます
-
-## YDM's Weapon Master を外しました（v1.13.4）
-
-- v1.12.0〜v1.13.3 に入れていた **YDM's Weapon Master**（ホットバーの武器を背中・腰に表示する mod）を外しました
-- bat をもう一度実行すると `mods` から自動で消えます。サーバーの `mods` からも `weaponmaster_ydm-forge-1.20.1-4.2.3.jar` を消してください
-
-## 暑さ・寒さ・喉の渇きについて（v1.15.0〜）
-
-- **Tough As Nails を外したので、暑さ・寒さ（体温）も喉の渇きもありません**（前提の GlitchCore も一緒に外しました）
-- v1.13.3〜v1.14.0 は、設定で体温だけ切って喉の渇きは残していました。v1.15.0 からは mod ごと外しています
-- bat をもう一度実行すると `mods` から自動で消えます。**サーバーの `mods` からも `ToughAsNails-forge-1.20.1-9.2.0.171.jar` と `GlitchCore-forge-1.20.1-0.0.1.1.jar` を消してください**
-- 体温・渇きのゲージや、Tough As Nails の水筒・アイテムはなくなります
-- Heat and Climate は v1.10.0 で外しました（v1.6.0〜v1.9.0 に入っていました）。bat をもう一度実行すると `mods` から自動で消えます
+- **Heat and Climate** を入れ直しました（v1.6.0〜v1.9.0 にも入っていました）。季節・天気・作物の気候はそのまま働きます
+- **体温（暑さ・寒さのダメージ）と気候の HUD は切っています。** bat が `config\dcs_climate-common.toml` の `"Enable Climate Damage"` と `config\dcs_climate-client.toml` の `"Show Climate HUD"` を `false` にします
+- **サーバーで遊ぶときは、ダメージはサーバーの設定で決まります。** サーバーの `config/dcs_climate-common.toml` も `false` にしてください（[server-mods.md](server-mods.md) の「サーバーの設定」）
+- Tough As Nails は v1.15.0 で外したままです（喉の渇きもありません）
 
 ## サーバーを立てるとき
 
@@ -119,7 +100,7 @@ bat が次の2つをダウンロードして、最初から有効にします（
 | [New Glowing Ores](https://modrinth.com/resourcepack/new-glowing-ores)（Border・1.20用 v1.3） | 鉱石の粒が縁取り付きで光る | GridExpert・CC BY-NC-SA 4.0 |
 | [PvP Swords](https://modrinth.com/resourcepack/short-pvp-swords)（1.20.1用 v1.0.1） | バニラの剣6種類が短くなる | All Rights Reserved |
 
-- ゲーム内でテクスチャを切り替えるときは、**ワールドに入ってから**「Esc → 設定 → リソースパック」で切り替えてください。（v1.9.0 までは、タイトル画面で切り替えると Heat and Climate の不具合で全部外れていました）
+- ゲーム内でテクスチャを切り替えるときは、**ワールドに入ってから**「Esc → 設定 → リソースパック」で切り替えてください。タイトル画面で切り替えると、Heat and Climate 5.0.6 の不具合で「読み込み失敗」になり、全部外れてしまいます
 - 自分で選んだ他のテクスチャは残ります。bat をもう一度実行すると、この2つはまた有効になります
 
 ### サーバーで New Glowing Ores を強制する

@@ -35,7 +35,6 @@ CLIENT_ONLY = {
     'notenoughanimations-forge-1.12.7-mc1.20.1.jar': '手の動き（クライアント専用）',
     'CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar': 'カメラの揺れ',
     'cloth-config-11.1.136-forge.jar': 'Camera Overhaul の設定画面用。ほかに使う mod がない',
-    'BetterAdvancements-Forge-1.20.1-0.4.2.60.jar': '進捗画面の見た目だけ',
 }
 
 # 前の版から外した mod(サーバーからも消してもらう): (外した版, ファイル名)
@@ -116,6 +115,7 @@ def write_md(ver, mods):
     w('')
     w('Distant Horizons はサーバーにも入れます（サーバー側で遠くの地形を作って配れるようになります）。\n')
     w('## 前の版から外した mod（サーバーからも消す）\n')
+    w('**v2.0.0 で mod を大きく減らしました。サーバーの `mods` は一度中身を全部消して、上の一覧の jar だけを入れ直すのが確実です。**\n')
     w('サーバーの `mods` にまだあれば取り除いてください。\n')
     w('| 外した版 | ファイル |')
     w('| --- | --- |')
@@ -132,8 +132,14 @@ def write_md(ver, mods):
     w('**地形の mod を入れ替えたら、ワールドを作り直してください。** 前のワールドをそのまま使うと、')
     w('バイオームが見つからない警告が出たり、地形の境目が切れたりします。')
     w('Nullscape は Stellarity と同じエンドのファイルを書き換えるので入れていません。\n')
-    w('## 暑さ・寒さ・喉の渇き（v1.15.0〜）\n')
-    w('v1.15.0 で Tough As Nails を外したので、暑さ・寒さ（体温）も喉の渇きもありません。')
+    w('## サーバーの設定（config）\n')
+    w('v2.0.0 から Heat and Climate（季節・天気・作物の気候）が入っています。体温（暑さ・寒さのダメージ）は切っています。')
+    w('**ダメージを受けるかどうかはサーバーの設定で決まる**ので、サーバーでも次のように書き換えてください。\n')
+    w('| ファイル | 項目 | 値 |')
+    w('| --- | --- | --- |')
+    w('| `config/dcs_climate-common.toml` | `"Enable Climate Damage"` | `false` |')
+    w('')
+    w('ファイルがなければ、サーバーを一度起動すると作られます。書き換えたらサーバーを再起動します。')
     w('`config/toughasnails` フォルダは残っていても使われません（消してもかまいません）。\n')
     open(MD, 'w', encoding='utf-8', newline='\n').write('\n'.join(o))
     return srv
