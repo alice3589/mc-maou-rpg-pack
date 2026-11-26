@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '2.0.0'
+$PackVersion = '2.1.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -60,11 +60,13 @@ $Mods = @(
     @('urushi-1.20.1-6.7.0.jar', 'https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar', '5f9be08bf26b7750029aed63d7d4c20688e7065f')
 )
 $Shader = @('ComplementaryUnbound_r5.10.zip', 'https://cdn.modrinth.com/data/R6NEzAwj/versions/QJiYQisE/ComplementaryUnbound_r5.10.zip', '7a9a6b667b89d6b442837c5c367cd6cc8356b400')
-# Texture packs (resource packs): file name, download URL, SHA-1. Turned on in options.txt.
+# Texture packs (resource packs): file name, download URL, SHA-1. They are merged into one pack
+# ($MergedPackName) on this PC, and only that one is turned on in options.txt.
 $Packs = @(
     @('NewGlowingOres-Border-1.3-1.20.zip', 'https://cdn.modrinth.com/data/oL18adaQ/versions/YoXl9tp0/NewGlowingOres%C2%A76%5BBV-1.3%5D%5B1.20%5D.zip', '5386de443f769021ac09e7be77f04faf4198b7bf'),
     @('PvPSwords-1.0.1.zip', 'https://cdn.modrinth.com/data/BpaObV8j/versions/m6EWsDYh/shorterswords.zip', '5a0a83f4ea4cd524fd1d9b4709720fd3743c20ab')
 )
+$MergedPackName = 'MaouRPG-Textures.zip'
 $DhRenderDistance = 1024
 
 function Say($t) { Write-Host $t }
@@ -223,13 +225,52 @@ if (-not (Test-Path -LiteralPath $oc)) {
 $opt = Join-Path $GameDir 'options.txt'
 if (-not (Test-Path -LiteralPath $opt)) { [IO.File]::WriteAllText($opt, "lang:ja_jp`n") }
 
-# Texture packs: download, then add them to resourcePacks in options.txt (other packs you chose are kept)
+# Texture packs (v2.1.0~): download the packs into a cache folder, then merge them into ONE pack
+# on this PC (the merged file is never uploaded anywhere, because PvP Swords may not be redistributed).
 $PackDir = Join-Path $GameDir 'resourcepacks'
-New-Item -ItemType Directory -Force -Path $PackDir | Out-Null
+$PackCache = Join-Path $GameDir 'maou-rpg-packs'
+New-Item -ItemType Directory -Force -Path $PackDir, $PackCache | Out-Null
 foreach ($pk in $Packs) {
-    $r = Get-Verified $pk[1] (Join-Path $PackDir $pk[0]) $pk[2]
+    $old = Join-Path $PackDir $pk[0]   # v1.8.0-v2.0.0 put the packs straight into resourcepacks
+    $dst = Join-Path $PackCache $pk[0]
+    if ((Test-Path -LiteralPath $old) -and -not (Test-Path -LiteralPath $dst)) { Move-Item -LiteralPath $old -Destination $dst }
+    elseif (Test-Path -LiteralPath $old) { Remove-Item -LiteralPath $old -Force }
+    $r = Get-Verified $pk[1] $dst $pk[2]
     Say ("    texture pack {0} {1}" -f $r.PadRight(3), $pk[0])
 }
+Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
+$Merged = Join-Path $PackDir $MergedPackName
+$mtmp = "$Merged.tmp"
+if (Test-Path -LiteralPath $mtmp) { Remove-Item -LiteralPath $mtmp -Force }
+$fs = [IO.File]::Open($mtmp, 'Create')
+$zout = New-Object IO.Compression.ZipArchive($fs, [IO.Compression.ZipArchiveMode]::Create)
+$done = New-Object 'System.Collections.Generic.HashSet[string]'
+function Add-ZipText($name, $text) {
+    $e = $zout.CreateEntry($name)
+    $w = New-Object IO.StreamWriter($e.Open(), (New-Object Text.UTF8Encoding $false))
+    $w.Write($text); $w.Dispose()
+    [void]$done.Add($name)
+}
+Add-ZipText 'pack.mcmeta' "{`n  `"pack`": {`n    `"pack_format`": 15,`n    `"description`": `"Maou RPG textures: New Glowing Ores + PvP Swords`"`n  }`n}`n"
+Add-ZipText 'credits.txt' ("This pack was made on your PC by install-maou-rpg.bat from these packs:`n" +
+    "- New Glowing Ores (Border, v1.3) by GridExpert - CC BY-NC-SA 4.0 - https://modrinth.com/resourcepack/new-glowing-ores`n" +
+    "- PvP Swords (v1.0.1) - All Rights Reserved - https://modrinth.com/resourcepack/short-pvp-swords`n" +
+    "Do not share this file. PvP Swords may not be redistributed.`n")
+foreach ($pk in $Packs) {
+    $zin = [IO.Compression.ZipFile]::OpenRead((Join-Path $PackCache $pk[0]))
+    try {
+        foreach ($e in $zin.Entries) {
+            if ($e.FullName.EndsWith('/') -or $e.FullName -eq 'pack.mcmeta') { continue }
+            if (-not $done.Add($e.FullName)) { continue }   # first pack wins (only pack.png is in both)
+            $ne = $zout.CreateEntry($e.FullName)
+            $src = $e.Open(); $dstS = $ne.Open()
+            $src.CopyTo($dstS); $dstS.Dispose(); $src.Dispose()
+        }
+    } finally { $zin.Dispose() }
+}
+$zout.Dispose(); $fs.Dispose()
+Move-Item -LiteralPath $mtmp -Destination $Merged -Force
+Say "    texture packs merged into one: $MergedPackName"
 $lines = [System.Collections.Generic.List[string]]([IO.File]::ReadAllLines($opt))
 $idx = -1
 for ($k = 0; $k -lt $lines.Count; $k++) { if ($lines[$k].StartsWith('resourcePacks:')) { $idx = $k; break } }
@@ -240,11 +281,20 @@ if ($idx -ge 0) {
 } else {
     $sel.Add('vanilla'); $sel.Add('mod_resources')
 }
-foreach ($pk in $Packs) { $id = 'file/' + $pk[0]; if (-not $sel.Contains($id)) { $sel.Add($id) } }
+foreach ($pk in $Packs) { [void]$sel.Remove('file/' + $pk[0]) }   # the 2 separate packs (v1.8.0-v2.0.0)
+if (-not $sel.Contains("file/$MergedPackName")) { $sel.Add("file/$MergedPackName") }
 $packLine = 'resourcePacks:' + (ConvertTo-Json -InputObject ([string[]]$sel.ToArray()) -Compress)
 if ($idx -ge 0) { $lines[$idx] = $packLine } else { $lines.Add($packLine) }
+$inc = -1
+for ($k = 0; $k -lt $lines.Count; $k++) { if ($lines[$k].StartsWith('incompatibleResourcePacks:')) { $inc = $k; break } }
+if ($inc -ge 0) {
+    $il = New-Object System.Collections.Generic.List[string]
+    foreach ($s in (ConvertFrom-Json -InputObject $lines[$inc].Substring(26))) { if ($s) { $il.Add([string]$s) } }
+    foreach ($pk in $Packs) { [void]$il.Remove('file/' + $pk[0]) }
+    $lines[$inc] = 'incompatibleResourcePacks:' + (ConvertTo-Json -InputObject ([string[]]$il.ToArray()) -Compress)
+}
 [IO.File]::WriteAllLines($opt, [string[]]$lines.ToArray(), (New-Object Text.UTF8Encoding $false))
-Say '    texture packs turned on (New Glowing Ores + PvP Swords)'
+Say "    texture pack turned on ($MergedPackName)"
 
 # Distant Horizons: LOD render distance
 $Dh = Join-Path $GameDir 'config\DistantHorizons.toml'
