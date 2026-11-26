@@ -17,7 +17,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$PackVersion = '2.3.0'
+$PackVersion = '2.4.0'
 $McVersion   = '1.20.1'
 $ForgeBuild  = '47.4.29'
 $ForgeSha1   = '5061de68499474cc8eeeede3d794afb063dd3e6d'
@@ -49,12 +49,10 @@ $Mods = @(
     @('CameraOverhaul-v2.1.2-forge+mc[1.20-1.20.5].jar', 'https://cdn.modrinth.com/data/m0oRwcZx/versions/Apl3bbtA/CameraOverhaul-v2.1.2-forge%2Bmc%5B1.20-1.20.5%5D.jar', '2b9e4499b00449e670a9dd399dddbb9cd7c0e531'),
     @('notenoughanimations-forge-1.12.7-mc1.20.1.jar', 'https://cdn.modrinth.com/data/MPCX6s5C/versions/3YRHi2mE/notenoughanimations-forge-1.12.7-mc1.20.1.jar', '94b051bda7fd0e7f8e8b119db779d3a9c8730f80'),
     @('cloth-config-11.1.136-forge.jar', 'https://cdn.modrinth.com/data/9s6osm5g/versions/t8TXrZvZ/cloth-config-11.1.136-forge.jar', 'c65d07748acc57ceb45d53b3964368b84f34d54f'),
-    @('mysterious_mountain_lib-1.6.34-1.20.1.jar', 'https://cdn.modrinth.com/data/ntMyNH8c/versions/m0IYPVS4/mysterious_mountain_lib-1.6.34-1.20.1.jar', '4fb6e35edf9384fde736cd9ee972468d65f61dce'),
     @('Cucumber-1.20.1-7.0.16.jar', 'https://cdn.modrinth.com/data/Rw1NrDzF/versions/xnLznSfT/Cucumber-1.20.1-7.0.16.jar', '88a9ec30e4acb5c80a3ae060ad70b79e945293c6'),
     @('bagus_lib-1.20.1-5.6.1.jar', 'https://cdn.modrinth.com/data/95nSN4Rd/versions/EutpppUn/bagus_lib-1.20.1-5.6.1.jar', 'd62b6b77efc3c6a25eb72b2f7bcf53b6d09d47ba'),
     @('MysticalAgradditions-1.20.1-7.0.12.jar', 'https://cdn.modrinth.com/data/pl0jGXIx/versions/48qKWNA7/MysticalAgradditions-1.20.1-7.0.12.jar', 'b4fcc78796a6e1f637523298cf7b3fe7f1dd3ed9'),
     @('MysticalAgriculture-1.20.1-7.0.24.jar', 'https://cdn.modrinth.com/data/C95ReXie/versions/EEilTecF/MysticalAgriculture-1.20.1-7.0.24.jar', 'e8839d207456a47ed6a576469901a087319b505f'),
-    @('Sakura-1.1.16-1.20.1.jar', 'https://cdn.modrinth.com/data/U5QgI9Bi/versions/dNA724FP/Sakura-1.1.16-1.20.1.jar', '03ce0fdaf0827d39b6223556aac25b39f5309323'),
     @('TofuCraftReload-1.20.1-5.18.4.0.jar', 'https://cdn.modrinth.com/data/69rMY8bC/versions/WPZTUJy7/TofuCraftReload-1.20.1-5.18.4.0.jar', 'a3c1ef9f3d1f808f55ee34447747441e9f9f1195'),
     @('HeatAndClimate-1.20.1-v5.0.6.jar', 'https://mediafilez.forgecdn.net/files/9322/626/HeatAndClimate-1.20.1-v5.0.6.jar', 'f8e5dab4794c54fb3cff27ac6e814778bb416d38'),
     @('architectury-9.2.14-forge.jar', 'https://cdn.modrinth.com/data/lhGA9TYQ/versions/1MKTLiiG/architectury-9.2.14-forge.jar', 'a52918a500ff421180a1cbd1a0cabee712134ec4'),
@@ -62,6 +60,9 @@ $Mods = @(
     @('ftb-ultimine-forge-2001.1.8.jar', 'https://mediafilez.forgecdn.net/files/7880/472/ftb-ultimine-forge-2001.1.8.jar', 'c2a1eb72c36ad067faafbff4e1618c4db906de74'),
     @('LMML-1.20.1-8.3.1-Forge.jar', 'https://github.com/SistrScarlet/LittleMaidModelLoader-Architectury/releases/download/v8.3.1/LMML-1.20.1-8.3.1-Forge.jar', 'a3c3cf051dc6617338682e681ef2f90205c61c9f'),
     @('LMRB-1.20.1-8.11.1-Forge.jar', 'https://github.com/SistrScarlet/LittleMaidReBirth-Architectury/releases/download/v8.11.1/LMRB-1.20.1-8.11.1-Forge.jar', '7b6da1ab000f61d77e12d8b08c96ab29b0dbd727'),
+    @('kotlinforforge-4.12.0-all.jar', 'https://cdn.modrinth.com/data/ordsPcFz/versions/Zsh14XeQ/kotlinforforge-4.12.0-all.jar', '962fdb760409d6d71cbf079235f1ca94e3863a22'),
+    @('libIPN-forge-1.20-4.0.2.jar', 'https://cdn.modrinth.com/data/onSQdWhM/versions/pdAXmKcS/libIPN-forge-1.20-4.0.2.jar', '3e7c7fcdc037a6ae3d9146e718d87fc83f88f6d5'),
+    @('InventoryProfilesNext-forge-1.20-1.10.20.jar', 'https://cdn.modrinth.com/data/O7RBXm3n/versions/CrtAI3P9/InventoryProfilesNext-forge-1.20-1.10.20.jar', '979e74fa10b24a7d7c4d9aeb5824b80f4f9235cf'),
     @('urushi-1.20.1-6.7.0.jar', 'https://mediafilez.forgecdn.net/files/9235/710/urushi-1.20.1-6.7.0.jar', '5f9be08bf26b7750029aed63d7d4c20688e7065f')
 )
 $Shader = @('ComplementaryUnbound_r5.10.zip', 'https://cdn.modrinth.com/data/R6NEzAwj/versions/QJiYQisE/ComplementaryUnbound_r5.10.zip', '7a9a6b667b89d6b442837c5c367cd6cc8356b400')
