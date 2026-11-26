@@ -141,6 +141,15 @@ def write_md(ver, mods):
     w('')
     w('ファイルがなければ、サーバーを一度起動すると作られます。書き換えたらサーバーを再起動します。')
     w('`config/toughasnails` フォルダは残っていても使われません（消してもかまいません）。\n')
+    w('## テクスチャをサーバーで配る（v2.2.0〜）\n')
+    w('`server.properties` の次の3行を、この値に書き換えます（なければ足します）。入ってきた人にテクスチャ（New Glowing Ores + PvP Swords をまとめたもの）が配られます。\n')
+    w('```')
+    w('resource-pack=<Dropbox の直接ダウンロードのリンク（最後が dl=1）>')
+    w('resource-pack-sha1=<置いたファイルの SHA-1>')
+    w('require-resource-pack=true')
+    w('```\n')
+    w('- パックは Dropbox に置いた、友達だけに配るものです（PvP Swords は再配布が許されていないので、このリンクを公開の場所に貼らないでください）')
+    w('- Dropbox のファイルを置き換えたら、SHA-1 も新しいファイルのものに変えます\n')
     open(MD, 'w', encoding='utf-8', newline='\n').write('\n'.join(o))
     return srv
 

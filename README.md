@@ -2,7 +2,7 @@
 
 地形・見た目・農業や和風の別世界の mod 構成を、**公式ランチャー**から遊べるようにする一発インストーラーです。
 （v2.0.0 で、ボス・魔法・構造物などの mod はいったん外しています）
-`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 24個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
+`install-maou-rpg.bat` の1ファイルだけで、Forge の導入・mod 28個のダウンロード・影の設定・ランチャーへの起動構成の追加まで全部やります。
 
 ## 使い方
 
@@ -24,7 +24,7 @@
 | 手順 | 内容 |
 | --- | --- |
 | 1 | Forge 1.20.1-47.4.29 を `.minecraft` に導入（入っていれば飛ばす） |
-| 2 | mod 24個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
+| 2 | mod 28個を `%APPDATA%\.minecraft-rpg\mods` にダウンロード（全部 SHA-1 で照合） |
 | 3 | 影MOD用のシェーダー Complementary Unbound を入れて、最初から影をオン・言語を日本語に。テクスチャ2つを1つにまとめて有効にし、Distant Horizons の描画距離を 1024 に |
 | 4 | ランチャーに起動構成「魔王討伐RPG (1.20.1 Forge)」を追加（メモリは PC に合わせて 4〜8GB） |
 
@@ -41,11 +41,14 @@ Terralith（バイオーム95種以上）/ Tectonic 3（大陸と巨大な山脈
 **農業・和風・別世界**
 Mystical Agriculture + Agradditions（鉱石や資源を畑で育てる）/ Sakura（桜と和風の食べ物）/ TofuCraft Reload（豆腐の世界）/ Urushi（和風ブロックと隠世ディメンション）/ Heat and Climate（季節・天気・作物の気候。体温は切っています）
 
+**便利・仲間（v2.2.0〜）**
+FTB Ultimine（キーを押しながら壊すと、つながったブロックをまとめて掘る・伐る）/ Touhou Little Maid（東方リトルメイド。メイドを雇って家事や戦闘を任せる）
+
 **見た目**
 MinecraftCapes（マント）/ Oculus + Embeddium（影MOD）/ Distant Horizons（遠くまで描画）/ ItemPhysic Lite（落ちたアイテムが寝転がる・水に浮く）/ Sound Physics Remastered（洞窟で響く・壁の向こうの音がこもる）/ First-person Model（一人称で自分の体が見える）/ Not Enough Animations（一人称でも手の動きが細かくなる）/ Camera Overhaul（歩く・曲がるときにカメラが揺れる）
 
 **前提mod**
-Lithostitched / CreativeCore / Cloth Config / Mysterious Mountain Lib / Cucumber / Bagus Lib
+Lithostitched / CreativeCore / Cloth Config / Mysterious Mountain Lib / Cucumber / Bagus Lib / FTB Library / Architectury
 
 ## 地形生成について（v1.11.0〜）
 
@@ -105,7 +108,11 @@ bat が次の2つを Modrinth の配布元からダウンロードし、**自分
 - まとめたパックは、bat を実行するたびに作り直します。自分で選んだ他のテクスチャは残ります
 - **まとめたパックは人に渡さないでください。** PvP Swords は再配布が許されていません（パックの中の `credits.txt` にも書いてあります）。友達には bat を渡せば、各自の PC で同じものができます
 
-### サーバーで New Glowing Ores を強制する
+### サーバーでテクスチャを配る（v2.2.0〜）
+
+まとめたパックを Dropbox に置いて、サーバーから配っています。`server.properties` に書く3行は [server-mods.md](server-mods.md) の「テクスチャをサーバーで配る」にあります。リンクは友達だけに教えてください（PvP Swords は再配布が許されていません）。
+
+### （参考）New Glowing Ores だけを配る場合
 
 サーバーの `server.properties` に次の3行を書くと、入ってきた人に New Glowing Ores が配られます。断った人はサーバーに入れません。
 
